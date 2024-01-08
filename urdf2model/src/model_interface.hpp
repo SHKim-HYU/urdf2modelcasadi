@@ -112,6 +112,7 @@ namespace mecali
     casadi::Function forward_kinematics();
 
     casadi::Function kinematic_jacobian(std::string frame, std::string frame_name);
+    casadi::Function jacobian_derivative(std::string frame, std::string frame_name);
 
     casadi::Function robot_expressions(std::vector<std::string> frame_names, bool AUGMENT_ODE);
 

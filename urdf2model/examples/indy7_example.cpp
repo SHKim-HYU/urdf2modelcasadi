@@ -13,7 +13,7 @@ int main()
   // Instantiate a Serial_Robot object called robot_model
   mecali::Serial_Robot robot_model;
   // Define (optinal) gravity vector to be used
-  Eigen::Vector3d gravity_vector(0, 0, 0);
+  Eigen::Vector3d gravity_vector(0, 0, -9.81);
   // Eigen::Vector3d gravity_vector(0, 0, 0);
   // Create the model based on a URDF file
   robot_model.import_model(urdf_filename, gravity_vector);
@@ -53,6 +53,9 @@ int main()
 
   casadi::Function J_s = robot_model.kinematic_jacobian("space", end_effector_name);
   casadi::Function J_b = robot_model.kinematic_jacobian("body", end_effector_name);
+
+  casadi::Function dJ_s = robot_model.jacobian_derivative("space", end_effector_name);
+  casadi::Function dJ_b = robot_model.jacobian_derivative("body", end_effector_name);
 
   // casadi::Function fk       = robot_model.forward_kinematics("transformation", required_Frames);
 
@@ -115,6 +118,8 @@ int main()
   mecali::generate_code(J_id, "indy7_J_id", codegen_options);
   mecali::generate_code(J_s, "indy7_J_s", codegen_options);
   mecali::generate_code(J_b, "indy7_J_b", codegen_options);
+  mecali::generate_code(dJ_s, "indy7_dJ_s", codegen_options);
+  mecali::generate_code(dJ_b, "indy7_dJ_b", codegen_options);
 
   robot_model.generate_json("indy7.json");
 

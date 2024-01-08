@@ -365,6 +365,9 @@ namespace mecali
     pt.put("Jacobian_space_path", this->name + "_J_s.casadi");
     pt.put("Jacobian_body_path", this->name + "_J_b.casadi");
 
+    pt.put("Jacobian_derivative_space_path", this->name + "_dJ_s.casadi");
+    pt.put("Jacobian_derivative_body_path", this->name + "_dJ_b.casadi");
+
     pt.put("mass_matrix_path", this->name + "_M.casadi");
     pt.put("mass_inverse_matrix_path", this->name + "_Minv.casadi");
     pt.put("coriolis_path", this->name + "_C.casadi");
@@ -642,6 +645,12 @@ namespace mecali
   {
     CasadiData casadi_data(this->_casadi_model);
     return get_kinematic_jacobian(this->_casadi_model, casadi_data, frame, frame_name);
+  }
+
+  casadi::Function Serial_Robot::jacobian_derivative(std::string frame, std::string frame_name)
+  {
+    CasadiData casadi_data(this->_casadi_model);
+    return get_jacobian_derivative(this->_casadi_model, casadi_data, frame, frame_name);
   }
 
   casadi::Function Serial_Robot::robot_expressions(std::vector<std::string> frame_names, bool AUGMENT_ODE)

@@ -147,6 +147,61 @@ namespace mecali
         throw std::invalid_argument("There is no option \'" + frame + "\' for type of kinematic jacobian");
     }
   }
+
+casadi::Function get_jacobian_derivative(CasadiModel &cas_model, CasadiData &cas_data, std::string frame, std::string frame_name)
+  {
+    std::vector<CasadiScalar> func_outputs;
+    std::vector<std::string>  output_names;
+
+    // create the input vector (for pinocchio and for the returned function)
+    CasadiScalar        q_sx = casadi::SX::sym("q", cas_model.nq);
+    ConfigVectorCasadi  q_casadi(cas_model.nq);
+    pinocchio::casadi::copy( q_sx, q_casadi );
+
+    CasadiScalar        v_sx = casadi::SX::sym("v", cas_model.nv);
+    ConfigVectorCasadi  v_casadi(cas_model.nv);
+    pinocchio::casadi::copy( v_sx, v_casadi );
+    
+    // call the forward kinematics function
+    pinocchio::computeJointJacobians(cas_model,   cas_data,    q_casadi);
+    pinocchio::computeJointJacobiansTimeVariation(cas_model,   cas_data,    q_casadi,   v_casadi);
+    pinocchio::updateFramePlacements(cas_model,   cas_data);
+
+    CasadiData::Matrix6x Jrh(6,cas_model.nv); Jrh.fill(0);
+    CasadiData::Matrix6x dJrh(6,cas_model.nv); dJrh.fill(0);
+    int frame_idx=cas_model.getFrameId(frame_name);
+    
+    if (frame.compare("space") == 0)
+    {
+        CasadiScalar J_s(6,cas_model.nq);
+        pinocchio::getFrameJacobian(cas_model, cas_data, frame_idx, pinocchio::WORLD, Jrh);
+        
+        CasadiScalar dJ_s(6,cas_model.nv);
+        pinocchio::getFrameJacobianTimeVariation(cas_model, cas_data, frame_idx, pinocchio::WORLD, dJrh);
+        pinocchio::casadi::copy(dJrh, dJ_s);
+
+        func_outputs.insert(func_outputs.end(), dJ_s);
+
+        return casadi::Function("dJ_s", casadi::SXVector {q_sx, v_sx}, func_outputs, std::vector<std::string>{"q","v"}, std::vector<std::string>{"dJ_s"});
+    }
+    else if (frame.compare("body") == 0)
+    {
+        CasadiScalar J_b(6,cas_model.nq);
+        pinocchio::getFrameJacobian(cas_model, cas_data, frame_idx, pinocchio::LOCAL, Jrh);
+        
+        CasadiScalar dJ_b(6,cas_model.nv);
+        pinocchio::getFrameJacobianTimeVariation(cas_model, cas_data, frame_idx, pinocchio::LOCAL, dJrh);
+        pinocchio::casadi::copy(dJrh, dJ_b);
+
+        func_outputs.insert(func_outputs.end(), dJ_b);
+
+        return casadi::Function("dJ_b", casadi::SXVector {q_sx, v_sx}, func_outputs, std::vector<std::string>{"q","v"}, std::vector<std::string>{"dJ_b"});
+    }
+    else
+    {
+        throw std::invalid_argument("There is no option \'" + frame + "\' for type of kinematic jacobian");
+    }
+  }
 }
 
 // casadi::Function get_forward_kinematics_position(CasadiModel &cas_model, CasadiData &cas_data, std::string frame_name)
