@@ -257,7 +257,16 @@ target_link_libraries( hyu_mm_example
        ${CASADI_LIB}
        pinocchio::pinocchio
                          )
-                         
+## HYU Mobile Manipulator
+add_executable( hyumm_example
+              hyumm_example.cpp
+              )
+target_link_libraries( hyumm_example
+
+       ${PROJECT_NAME}
+       ${CASADI_LIB}
+       pinocchio::pinocchio
+                         )
 ## Soft Morphing
 add_executable( sftmp_example
               sftmp_example.cpp

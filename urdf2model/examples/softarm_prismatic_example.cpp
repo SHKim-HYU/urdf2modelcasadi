@@ -17,8 +17,8 @@ int main()
   // Eigen::Vector3d gravity_vector(0, 0, 0);
   // Create the model based on a URDF file
   robot_model.import_model(urdf_filename, gravity_vector);
-  // robot_model.import_floating_base_model(urdf_filename, gravity_vector, true, true);
-  //robot_model.import_planar_base_model(urdf_filename, gravity_vector, true, true);
+  // robot_model.import_floating_base_model(urdf_filename, gravity_vector, true, false);
+  //robot_model.import_planar_base_model(urdf_filename, gravity_vector, true, false);
   // For a floating base robot:
   // q = [global_base_position, global_base_quaternion, joint_positions]
   // v = [local_base_velocity_linear, local_base_velocity_angular, joint_velocities]

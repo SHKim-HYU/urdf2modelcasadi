@@ -9,7 +9,7 @@ int main()
   // ---------------------------------------------------------------------
   // Create a model based on a URDF file
   // ---------------------------------------------------------------------
-  std::string urdf_filename = ws_path+"/urdf2model/models/indy7/indy7.urdf";
+  std::string urdf_filename = ws_path+"/urdf2model/models/HYUMM/hyumm.urdf";
   // Instantiate a Serial_Robot object called robot_model
   mecali::Serial_Robot robot_model;
   // Define (optinal) gravity vector to be used
@@ -18,7 +18,7 @@ int main()
   // Create the model based on a URDF file
   robot_model.import_model(urdf_filename, gravity_vector);
   // robot_model.import_floating_base_model(urdf_filename, gravity_vector, true, true);
-  //robot_model.import_planar_base_model(urdf_filename, gravity_vector, true, true);
+  // robot_model.import_planar_base_model(urdf_filename, gravity_vector, true, false);
   // For a floating base robot:
   // q = [global_base_position, global_base_quaternion, joint_positions]
   // v = [local_base_velocity_linear, local_base_velocity_angular, joint_velocities]
@@ -106,25 +106,25 @@ int main()
   mecali::Dictionary codegen_options;
   codegen_options["c"] = true;
   codegen_options["save"] = true;
-  mecali::generate_code(fd, "indy7_fd", codegen_options);
-  mecali::generate_code(CoM_x, "indy7_CoM_x", codegen_options);
-  mecali::generate_code(id, "indy7_id", codegen_options);
-  mecali::generate_code(M, "indy7_M", codegen_options);
-  mecali::generate_code(Minv, "indy7_Minv", codegen_options);
-  mecali::generate_code(C, "indy7_C", codegen_options);
-  mecali::generate_code(G, "indy7_G", codegen_options);
+  mecali::generate_code(fd, "hyumm_fd", codegen_options);
+  mecali::generate_code(CoM_x, "hyumm_CoM_x", codegen_options);
+  mecali::generate_code(id, "hyumm_id", codegen_options);
+  mecali::generate_code(M, "hyumm_M", codegen_options);
+  mecali::generate_code(Minv, "hyumm_Minv", codegen_options);
+  mecali::generate_code(C, "hyumm_C", codegen_options);
+  mecali::generate_code(G, "hyumm_G", codegen_options);
   //mecali::generate_code(fk_ee_pos, "mmo500_ppr_fk_ee_pos", codegen_options);
-   mecali::generate_code(fkrot_ee, "indy7_fkrot_ee", codegen_options);
-  mecali::generate_code(fk_ee, "indy7_fk_ee", codegen_options);
-  mecali::generate_code(fk, "indy7_fk", codegen_options);
-  mecali::generate_code(J_fd, "indy7_J_fd", codegen_options);
-  mecali::generate_code(J_id, "indy7_J_id", codegen_options);
-  mecali::generate_code(J_s, "indy7_J_s", codegen_options);
-  mecali::generate_code(J_b, "indy7_J_b", codegen_options);
-  mecali::generate_code(dJ_s, "indy7_dJ_s", codegen_options);
-  mecali::generate_code(dJ_b, "indy7_dJ_b", codegen_options);
+   mecali::generate_code(fkrot_ee, "hyumm_fkrot_ee", codegen_options);
+  mecali::generate_code(fk_ee, "hyumm_fk_ee", codegen_options);
+  mecali::generate_code(fk, "hyumm_fk", codegen_options);
+  mecali::generate_code(J_fd, "hyumm_J_fd", codegen_options);
+  mecali::generate_code(J_id, "hyumm_J_id", codegen_options);
+  mecali::generate_code(J_s, "hyumm_J_s", codegen_options);
+  mecali::generate_code(J_b, "hyumm_J_b", codegen_options);
+  mecali::generate_code(dJ_s, "hyumm_dJ_s", codegen_options);
+  mecali::generate_code(dJ_b, "hyumm_dJ_b", codegen_options);
 
-  robot_model.generate_json("indy7.json");
+  robot_model.generate_json("hyumm.json");
 
   // std::cout << fd << std::endl;
 }

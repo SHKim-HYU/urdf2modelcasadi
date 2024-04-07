@@ -538,6 +538,12 @@ namespace mecali
 
     return get_forward_dynamics(this->_casadi_model, casadi_data);
   }
+  casadi::Function Serial_Robot::center_of_mass()
+  {
+    CasadiData casadi_data(this->_casadi_model);
+
+    return get_center_of_mass(this->_casadi_model, casadi_data);
+  }
   casadi::Function Serial_Robot::inverse_dynamics()
   {
     CasadiData casadi_data(this->_casadi_model);

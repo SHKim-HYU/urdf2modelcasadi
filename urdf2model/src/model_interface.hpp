@@ -89,6 +89,7 @@ namespace mecali
 
     // function methods
     casadi::Function forward_dynamics();
+    casadi::Function center_of_mass();
 
     casadi::Function inverse_dynamics();
     casadi::Function generalized_gravity();

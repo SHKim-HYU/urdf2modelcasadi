@@ -3,12 +3,14 @@
 
 #include "common.hpp"
 
+#include <pinocchio/algorithm/center-of-mass.hpp>
 #include <pinocchio/algorithm/aba.hpp>
 #include <pinocchio/algorithm/aba-derivatives.hpp>
 
 
 namespace mecali
 {
+  casadi::Function get_center_of_mass(CasadiModel &cas_model, CasadiData &cas_data);
   casadi::Function get_forward_dynamics(CasadiModel &cas_model, CasadiData &cas_data);
   casadi::Function get_mass_inverse(CasadiModel &cas_model, CasadiData &cas_data);
   casadi::Function get_forward_dynamics_derivatives(CasadiModel &cas_model, CasadiData &cas_data, std::string type );
