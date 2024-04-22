@@ -359,6 +359,9 @@ namespace mecali
     pt.put("forward_dynamics_path", this->name + "_fd.casadi");
     pt.put("inverse_dynamics_path", this->name + "_id.casadi");
 
+    pt.put("center_of_mass_path", this->name + "_CoM_x.casadi");
+    pt.put("jacobian_center_of_mass_path", this->name + "_J_com.casadi");
+
     pt.put("Jacobian_forward_dynamics_path", this->name + "_J_fd.casadi");
     pt.put("Jacobian_inverse_dynamics_path", this->name + "_J_id.casadi");
 
@@ -543,6 +546,12 @@ namespace mecali
     CasadiData casadi_data(this->_casadi_model);
 
     return get_center_of_mass(this->_casadi_model, casadi_data);
+  }
+  casadi::Function Serial_Robot::jacobian_center_of_mass()
+  {
+    CasadiData casadi_data(this->_casadi_model);
+
+    return get_jacobian_center_of_mass(this->_casadi_model, casadi_data);
   }
   casadi::Function Serial_Robot::inverse_dynamics()
   {

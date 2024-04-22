@@ -33,6 +33,8 @@ int main()
   // Set function for forward dynamics
   casadi::Function fd = robot_model.forward_dynamics();
   casadi::Function CoM_x = robot_model.center_of_mass();
+  casadi::Function J_com = robot_model.jacobian_center_of_mass();
+
   // // Set function for inverse dynamics
   casadi::Function id = robot_model.inverse_dynamics();
   casadi::Function M = robot_model.mass_matrix();
@@ -108,6 +110,7 @@ int main()
   codegen_options["save"] = true;
   mecali::generate_code(fd, "hyumm_fd", codegen_options);
   mecali::generate_code(CoM_x, "hyumm_CoM_x", codegen_options);
+  mecali::generate_code(J_com, "hyumm_J_com", codegen_options);
   mecali::generate_code(id, "hyumm_id", codegen_options);
   mecali::generate_code(M, "hyumm_M", codegen_options);
   mecali::generate_code(Minv, "hyumm_Minv", codegen_options);

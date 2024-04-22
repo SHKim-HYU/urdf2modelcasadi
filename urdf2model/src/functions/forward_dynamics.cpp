@@ -20,6 +20,24 @@ namespace mecali
     return centerOfMass;
   }
 
+  casadi::Function get_jacobian_center_of_mass(CasadiModel &cas_model, CasadiData &cas_data)
+  {
+    // Set variables
+    CasadiScalar        q_sx = casadi::SX::sym("q", cas_model.nq);
+    ConfigVectorCasadi  q_casadi(cas_model.nq);
+    q_casadi = Eigen::Map<ConfigVectorCasadi>(static_cast< std::vector<CasadiScalar> >(q_sx).data(),cas_model.nq,1);
+
+    pinocchio::centerOfMass(cas_model, cas_data, q_casadi, false);
+
+    CasadiScalar  J_com(3, 9);
+    // get the result (translation vector) from centerOfMass
+    pinocchio::casadi::copy( cas_data.com[0], J_com );
+    
+    casadi::Function centerOfMass("jacobianCenterOfMass", casadi::SXVector {q_sx}, casadi::SXVector {J_com}, std::vector<std::string>{"q"}, std::vector<std::string>{"Jacobian CoM"});
+    
+    return centerOfMass;
+  }
+
   casadi::Function get_forward_dynamics(CasadiModel &cas_model, CasadiData &cas_data)
   {
     // Set variables
