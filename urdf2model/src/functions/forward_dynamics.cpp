@@ -27,7 +27,7 @@ namespace mecali
     ConfigVectorCasadi  q_casadi(cas_model.nq);
     q_casadi = Eigen::Map<ConfigVectorCasadi>(static_cast< std::vector<CasadiScalar> >(q_sx).data(),cas_model.nq,1);
 
-    pinocchio::centerOfMass(cas_model, cas_data, q_casadi, false);
+    pinocchio::jacobianCenterOfMass(cas_model, cas_data, q_casadi, false);
 
     CasadiScalar  J_com(3, 9);
     // get the result (translation vector) from centerOfMass
