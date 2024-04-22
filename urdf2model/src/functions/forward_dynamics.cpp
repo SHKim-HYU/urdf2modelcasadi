@@ -29,9 +29,9 @@ namespace mecali
 
     pinocchio::jacobianCenterOfMass(cas_model, cas_data, q_casadi, false);
 
-    CasadiScalar  J_com(3, 9);
+    CasadiScalar  J_com(3, cas_model.nq);
     // get the result (translation vector) from centerOfMass
-    pinocchio::casadi::copy( cas_data.com[0], J_com );
+    pinocchio::casadi::copy( cas_data.Jcom, J_com );
     
     casadi::Function centerOfMass("jacobianCenterOfMass", casadi::SXVector {q_sx}, casadi::SXVector {J_com}, std::vector<std::string>{"q"}, std::vector<std::string>{"Jacobian CoM"});
     
