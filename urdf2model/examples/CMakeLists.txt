@@ -267,6 +267,29 @@ target_link_libraries( hyumm_example
        ${CASADI_LIB}
        pinocchio::pinocchio
                          )
+
+## Test ABI: Indy7
+add_executable( test_abi_indy7_example
+              test_abi_indy7_example.cpp
+              )
+target_link_libraries( test_abi_indy7_example
+
+       ${PROJECT_NAME}
+       ${CASADI_LIB}
+       pinocchio::pinocchio
+                         )
+
+## Test ABI: Chaser
+add_executable( test_abi_chaser_example
+              test_abi_chaser_example.cpp
+              )
+target_link_libraries( test_abi_chaser_example
+
+       ${PROJECT_NAME}
+       ${CASADI_LIB}
+       pinocchio::pinocchio
+                         )
+
 ## Soft Morphing
 add_executable( sftmp_example
               sftmp_example.cpp
