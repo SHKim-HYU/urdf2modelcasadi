@@ -87,17 +87,17 @@
     name="base_link">
     <inertial>
       <origin
-        xyz="-0.02461277 0 0.15106643"
+        xyz="-0.02314163 0 0.14646583"
         rpy="0 0 0" />
       <mass
-        value="50.03647319" />
+        value="53.53736408" />
       <inertia
-        ixx="2.67652624"
-        ixy="0.01131569"
-        ixz="-0.083242"
-        iyy="5.55238176"
-        iyz="6.42E-06"
-        izz="5.66864802" />
+        ixx="1.81165434"
+        ixy="0.01131605"
+        ixz="0.08235226"
+        iyy="4.92583072"
+        iyz="0.00000413"
+        izz="6.44882489" />
     </inertial>
     <visual>
       <origin
@@ -122,213 +122,10 @@
           filename="meshes/stl/base_link.STL" />
       </geometry>
     </collision>
-  </link>
-  <link
-    name="wheel_left_front">
-    <inertial>
-      <origin
-        xyz="-2.623E-05 0.021795 2.623E-05"
-        rpy="0 0 0" />
-      <mass
-        value="0.8" />
-      <inertia
-        ixx="0.00044643"
-        ixy="-4.1E-07"
-        ixz="0"
-        iyy="9.628E-05"
-        iyz="5E-07"
-        izz="0.00044613" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 3.141592" />
-      <geometry>
-        <mesh
-          filename="meshes/stl/wheel_left_front.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.79216 0.81961 0.93333 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 3.141592" />
-      <geometry>
-        <mesh
-          filename="meshes/stl/wheel_left_front.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="joint_left_front"
-    type="fixed">
-    <origin
-      xyz="0.41 -0.269 0.08"
-      rpy="0 0 0" />
-    <parent
-      link="base_link" />
-    <child
-      link="wheel_left_front" />
-  </joint>
-  <link
-    name="wheel_left_back">
-    <inertial>
-      <origin
-        xyz="-2.623E-05 -0.021795 -2.623E-05"
-        rpy="0 0 0" />
-      <mass
-        value="0.8" />
-      <inertia
-        ixx="0.00044643"
-        ixy="-4.1E-07"
-        ixz="0"
-        iyy="9.628E-05"
-        iyz="5E-07"
-        izz="0.00044613" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 3.141592" />
-      <geometry>
-        <mesh
-          filename="meshes/stl/wheel_left_back.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.79216 0.81961 0.93333 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 3.141592" />
-      <geometry>
-        <mesh
-          filename="meshes/stl/wheel_left_back.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="joint_left_back"
-    type="fixed">
-    <origin
-      xyz="-0.41 -0.269 0.08"
-      rpy="0 0 0" />
-    <parent
-      link="base_link" />
-    <child
-      link="wheel_left_back" />
-  </joint>
-  <link
-    name="wheel_right_front">
-    <inertial>
-      <origin
-        xyz="-2.623E-05 -0.021795 -2.623E-05"
-        rpy="0 0 0" />
-      <mass
-        value="0.8" />
-      <inertia
-        ixx="0.00044643"
-        ixy="4.1E-07"
-        ixz="0"
-        iyy="9.628E-05"
-        iyz="5E-07"
-        izz="0.00044613" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="meshes/stl/wheel_right_front.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.79216 0.81961 0.93333 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="meshes/stl/wheel_right_front.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="joint_right_front"
-    type="fixed">
-    <origin
-      xyz="0.41 0.269 0.08"
-      rpy="0 0 0" />
-    <parent
-      link="base_link" />
-    <child
-      link="wheel_right_front" />
-  </joint>
-  <link
-    name="wheel_right_back">
-    <inertial>
-      <origin
-        xyz="-2.623E-05 -0.021795 -2.623E-05"
-        rpy="0 0 0" />
-      <mass
-        value="0.8" />
-      <inertia
-        ixx="0.00044643"
-        ixy="4.1E-07"
-        ixz="0"
-        iyy="9.628E-05"
-        iyz="5E-07"
-        izz="0.00044613" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="meshes/stl/wheel_right_back.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.79216 0.81961 0.93333 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="meshes/stl/wheel_right_back.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="joint_right_back"
-    type="fixed">
-    <origin
-      xyz="-0.41 0.269 0.08"
-      rpy="0 0 0" />
-    <parent
-      link="base_link" />
-    <child
-      link="wheel_right_back" />
-  </joint>
+  </link>  
+
   <!-- Manipulator Indy7 -->
-    <link name="link0">
+  <link name="link0">
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
@@ -368,10 +165,10 @@
     </visual>
 
     <inertial>
-	<origin xyz="-0.29477536 -0.00002361 0.04762554" rpy="0 0 0"/>
-	<mass value="5.84766553"/>
-	<inertia ixx="+0.03599743" iyy="+0.72293306" izz="+0.70024119" ixy="-0.00004693" iyz="+0.00000176" ixz="-0.05240346"/>
-    </inertial>
+			<origin xyz="-0.29616699 0.00002254 0.04483069" rpy="0 0 0"/>
+			<mass value="5.84766553"/>
+			<inertia ixx="+0.03599743" iyy="+0.72293306" izz="+0.70024119" ixy="-0.00004693" iyz="+0.00000176" ixz="-0.05240346"/>
+		</inertial>
   </link>
   <link name="link3">
     <visual>
@@ -383,10 +180,10 @@
     </visual>
 
     <inertial>
-    	<origin xyz="-0.16804016 0.00021421 -0.07000383" rpy="0 0 0"/>
-	<mass value="2.68206064"/>
-	<inertia ixx="+0.01617210" iyy="+0.11364055" izz="+0.10022522" ixy="-0.00011817" iyz="-0.00004371" ixz="+0.03341882"/>
-    </inertial>
+			<origin xyz="-0.16804016 0.00021421 -0.07000383" rpy="0 0 0"/>
+			<mass value="2.68206064"/>
+			<inertia ixx="+0.01617210" iyy="+0.11364055" izz="+0.10022522" ixy="-0.00011817" iyz="-0.00004371" ixz="+0.03341882"/>
+		</inertial>
   </link>
   <link name="link4">
     <visual>
@@ -398,10 +195,10 @@
     </visual>
 
     <inertial>
-	<origin xyz="-0.00026847 -0.07098440 0.07649128" rpy="0 0 0"/>
-	<mass value="2.12987371"/>
-	<inertia ixx="+0.02798891" iyy="+0.01443076" izz="+0.01496211" ixy="+0.00003893" iyz="-0.01266296" ixz="-0.00004768"/>
-    </inertial>
+			<origin xyz="-0.00026847 -0.07098440 0.07649128" rpy="0 0 0"/>
+			<mass value="2.12987371"/>
+			<inertia ixx="+0.02798891" iyy="+0.01443076" izz="+0.01496211" ixy="+0.00003893" iyz="-0.01266296" ixz="-0.00004768"/>
+		</inertial>
   </link>
   <link name="link5">
     <visual>
@@ -413,10 +210,10 @@
     </visual>
 
     <inertial>
-	<origin xyz="-0.09796232 -0.00023114 0.06445892" rpy="0 0 0"/>
-	<mass value="2.22412271"/>
-	<inertia ixx="+0.01105297" iyy="+0.03698291" izz="+0.02754795" ixy="+0.00005517" iyz="-0.00003740" ixz="-0.01481977"/>
-    </inertial>
+			<origin xyz="-0.09796232 -0.00023114 0.06445892" rpy="0 0 0"/>
+			<mass value="2.22412271"/>
+			<inertia ixx="+0.01105297" iyy="+0.03698291" izz="+0.02754795" ixy="+0.00005517" iyz="-0.00003740" ixz="-0.01481977"/>
+		</inertial>
   </link>
   <link name="link6">
     <visual>
@@ -428,10 +225,10 @@
     </visual>
 
     <inertial>
-	<origin xyz="0.00008147 -0.00046556 0.03079097" rpy="0 0 0"/>
-	<mass value="0.38254932"/>
-	<inertia ixx="+0.00078982" iyy="+0.00079764" izz="+0.00058319" ixy="-0.00000034" iyz="-0.00000508" ixz="+0.00000083"/>
-    </inertial>
+			<origin xyz="0.00008147 -0.00046556 0.03079097" rpy="0 0 0"/>
+			<mass value="0.38254932"/>
+			<inertia ixx="+0.00078982" iyy="+0.00079764" izz="+0.00058319" ixy="-0.00000034" iyz="-0.00000508" ixz="+0.00000083"/>
+		</inertial>
   </link>
   <link name="tcp">
     <inertial>

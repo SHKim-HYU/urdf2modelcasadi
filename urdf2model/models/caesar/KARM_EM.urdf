@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="KARM_EM">
+ <link
+    name="world">
+  </link>
+  <joint
+    name="world_fixed" type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="world" />
+    <child
+      link="ASM_J1_EM" />
+  </joint>
+  <link
+    name="ASM_J1_EM">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="4.48218" />
+      <inertia
+        ixx="0.04755097476"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="0.04755157166"
+        iyz="0.00000000081"
+        izz="0.00981063776" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/ASM_J1_EM.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/ASM_J1_EM.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="ASM_HOUSING_T_EM">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="6.06194090" />
+	<inertia
+	  ixx="0.13634948"
+	  ixy="0.0"
+	  ixz="0.0"
+	  iyy="0.08969039"
+	  iyz="-0.01060860"
+	  izz="0.06171552" />
+
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/ASM_HOUSING_T_EM.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/ASM_HOUSING_T_EM.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint1"
+    type="revolute">
+    <origin
+      xyz="0 0 0.128"
+      rpy="0 0 0" />
+    <parent
+      link="ASM_J1_EM" />
+    <child
+      link="ASM_HOUSING_T_EM" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="100"
+      velocity="10" />
+  </joint>
+  <link
+    name="ASM_J2_EM">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="10.09583" />
+	<inertia
+	  ixx="0.96199126140"
+	  ixy="0.00000015468"
+	  ixz="-0.00000015422"
+	  iyy="0.90760532210"
+	  iyz="-0.19430884455"
+	  izz="0.07843312705" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/ASM_J2_EM.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/ASM_J2_EM.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint2"
+    type="revolute">
+    <origin
+      xyz="0 0.0915 0.128"
+      rpy="0 0 0" />
+    <parent
+      link="ASM_HOUSING_T_EM" />
+    <child
+      link="ASM_J2_EM" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="100"
+      velocity="10" />
+  </joint>
+  <link
+    name="ASM_J3_EM">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="6.64337" />
+	<inertia
+	  ixx="0.64375247576"
+	  ixy="-0.00109731075"
+	  ixz="0.01355317066"
+	  iyy="0.63648860904"
+	  iyz="0.05017798413"
+	  izz="0.02421839629" />
+
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/ASM_J3_EM.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/ASM_J3_EM.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint3"
+    type="revolute">
+    <origin
+      xyz="0 0.0915 0.4695"
+      rpy="0 0.0 0" />
+    <parent
+      link="ASM_J2_EM" />
+    <child
+      link="ASM_J3_EM" />
+    <axis
+      xyz="0.0 0 1.0" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="100"
+      velocity="10" />
+  </joint>
+  <link
+    name="ASM_J4_EM">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="9.04321" />
+	<inertia
+	  ixx="0.11502666593"
+	  ixy="0.00000015468"
+	  ixz="0.00000015422"
+	  iyy="0.06945354590"
+	  iyz="0.04379192449"
+	  izz="0.06550536877" />
+
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/ASM_J4_EM.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/ASM_J4_EM.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint4"
+    type="revolute">
+    <origin
+      xyz="0.0 -0.0915 0.3955"
+      rpy="0 0 0" />
+    <parent
+      link="ASM_J3_EM" />
+    <child
+      link="ASM_J4_EM" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="100"
+      velocity="10" />
+  </joint>
+  <link
+    name="ASM_J5_EM">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="6.64337" />
+	<inertia
+	  ixx="0.64404882848"
+	  ixy="-0.00000008053"
+	  ixz="-0.00000051590"
+	  iyy="0.63648860904"
+	  iyz="0.05018998090"
+	  izz="0.02392204357" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/ASM_J5_EM.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/ASM_J5_EM.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint5"
+    type="revolute">
+    <origin
+      xyz="0 -0.0915 0.1395"
+      rpy="0 0 0" />
+    <parent
+      link="ASM_J4_EM" />
+    <child
+      link="ASM_J5_EM" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="100"
+      velocity="10" />
+  </joint>
+  <link
+    name="ASM_J6_EM">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="8.75036" />
+	<inertia
+	  ixx="0.16834751634"
+	  ixy="-0.00000007826"
+	  ixz="0.00000017014"
+	  iyy="0.12157470853"
+	  iyz="-0.01389167842"
+	  izz="0.06831569063" />
+
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/ASM_J6_EM.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/ASM_J6_EM.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint6"
+    type="revolute">
+    <origin
+      xyz="0 -0.0915 0.3955"
+      rpy="0 0 0" />
+    <parent
+      link="ASM_J5_EM" />
+    <child
+      link="ASM_J6_EM" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="100"
+      velocity="10" />
+  </joint>
+  <link
+    name="ASM_J7_EM">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="4.49347" />
+	<inertia
+	  ixx="0.01157801213"
+	  ixy="0.0"
+	  ixz="0.0"
+	  iyy="0.01157801213"
+	  iyz="0.0"
+	  izz="0.00894926406" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/ASM_J7_EM.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/ASM_J7_EM.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint7"
+    type="revolute">
+    <origin
+      xyz="0 -0.0915 0.128"
+      rpy="0 0 0" />
+    <parent
+      link="ASM_J6_EM" />
+    <child
+      link="ASM_J7_EM" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="100"
+      velocity="10" />
+  </joint>
+    <link  name="eef_link">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.0" />
+      <inertia
+        ixx="0.000000000001"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="0.000000000001"
+        iyz="0.0"
+        izz="0.000000000001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+      <material
+        name="red">
+        <color
+          rgba="1.0 0 0 1" />
+      </material>
+    </visual>    
+  </link>
+
+
+    <joint
+    name="eef_fixed"
+    type="fixed">
+    <origin
+      xyz="0 0 0.087"
+      rpy="0 0 0" />
+    <parent
+      link="ASM_J7_EM" />
+    <child
+      link="eef_link" />
+  </joint>    
+</robot>

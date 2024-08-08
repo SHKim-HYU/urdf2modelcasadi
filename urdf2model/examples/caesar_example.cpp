@@ -3,13 +3,13 @@
 using namespace std;
 int main()
 {
-    string ws_path = "/home/mtplnr/mpc_ws/urdf2casadi_alejandro";
+    string ws_path = "/home/mtplnr/mpc_ws/urdf2modelcasadi";
   // Example with SFTMP URDF.
 
   // ---------------------------------------------------------------------
   // Create a model based on a URDF file
   // ---------------------------------------------------------------------
-  std::string urdf_filename = ws_path+"/urdf2model/models/caesar/ASM_CAESAR.urdf";
+  std::string urdf_filename = ws_path+"/urdf2model/models/caesar/KARM_EM.urdf";
   // Instantiate a Serial_Robot object called robot_model
   mecali::Serial_Robot robot_model;
   // Define (optinal) gravity vector to be used
@@ -39,9 +39,9 @@ int main()
   casadi::Function C = robot_model.coriolis_matrix();
   casadi::Function G = robot_model.generalized_gravity();
   // // Set function for forward kinematics
-  std::vector<std::string> required_Frames = {"Joint1", "Joint2", "Joint3", "Joint4", "Joint5", "Joint6", "Joint7", "tcp"};
+  std::vector<std::string> required_Frames = {"joint1", "joint2", "joint3", "joint4", "joint5", "joint6", "joint7", "eef_fixed"};
 
-  std::string end_effector_name = "tcp";
+  std::string end_effector_name = "eef_fixed";
 
   casadi::Function fkpos_ee = robot_model.forward_kinematics("position", end_effector_name);
   casadi::Function fkrot_ee = robot_model.forward_kinematics("rotation", end_effector_name);
@@ -51,43 +51,10 @@ int main()
   casadi::Function J_fd = robot_model.forward_dynamics_derivatives("jacobian");
   casadi::Function J_id = robot_model.inverse_dynamics_derivatives("jacobian");
 
-  // casadi::Function fk       = robot_model.forward_kinematics("transformation", required_Frames);
+  casadi::Function J_s = robot_model.kinematic_jacobian("space", end_effector_name);
+  casadi::Function J_b = robot_model.kinematic_jacobian("body", end_effector_name);
 
-  //casadi::Function fk_ee_pos = robot_model.forward_kinematics("position", end_effector_name);
 
-  // ---------------------------------------------------------------------
-  // Test the function - Floating base model
-  // ---------------------------------------------------------------------
-  // std::vector<double> global_base_position = {0.5, 1, 1.5};
-  // std::vector<double> global_base_quaternion = {0, 0, 0, 1}; // Identity quaternion
-  // std::vector<double> joint_positions = {0.86602540378, 0.5, 0, 1, 0, -0.45, 1, 0, 0};
-
-  // std::vector<double> q_vec;
-  // q_vec.insert(q_vec.end(), global_base_position.begin(), global_base_position.end());
-  // q_vec.insert(q_vec.end(), global_base_quaternion.begin(), global_base_quaternion.end());
-  // q_vec.insert(q_vec.end(), joint_positions.begin(), joint_positions.end());
-  // // q = [global_base_position, global_base_quaternion, joint_positions]
-
-  // // Evaluate the function with a casadi::DMVector containing q_vec as input
-  // casadi::DM T_res = fk_ee(casadi::DMVector{q_vec})[0];
-  // std::cout << "Function result with q_vec input        : " << T_res << std::endl;
-
-  // ---------------------------------------------------------------------
-  // Test the function - Planar base model
-  // ---------------------------------------------------------------------
-  //std::vector<double> global_base_position = {0, 0};
-  //std::vector<double> heading_angle_cos_sin = {1, 0};
-  //std::vector<double> joint_positions = {0.86602540378, 0.5, 0, 1, 0, -0.45, 1, 0, 0};
-
-  //std::vector<double> q_vec;
-  //q_vec.insert(q_vec.end(), global_base_position.begin(), global_base_position.end());
-  //q_vec.insert(q_vec.end(), heading_angle_cos_sin.begin(), heading_angle_cos_sin.end());
-  //q_vec.insert(q_vec.end(), joint_positions.begin(), joint_positions.end());
-  // q = [global_base_position, heading_angle_cos_sin, joint_positions]
-
-  // Evaluate the function with a casadi::DMVector containing q_vec as input
-  //casadi::DM T_res = fk_ee(casadi::DMVector{q_vec})[0];
-  //std::cout << "Function result with q_vec input        : " << T_res << std::endl;
 
   // ---------------------------------------------------------------------
   // Generate (or save) a function
@@ -95,22 +62,24 @@ int main()
   // Code-generate or save a function
   // If you use options, you can set if you want to C-code-generate the function, or just save it as "second_function.casadi" (which can be loaded afterwards using casadi::Function::load("second_function.casadi"))
   mecali::Dictionary codegen_options;
-  codegen_options["c"] = false;
+  codegen_options["c"] = true;
   codegen_options["save"] = true;
-  mecali::generate_code(fd, "ASM_CAESAR_fd", codegen_options);
-  mecali::generate_code(id, "ASM_CAESAR_id", codegen_options);
-  mecali::generate_code(M, "ASM_CAESAR_M", codegen_options);
-  mecali::generate_code(Minv, "ASM_CAESAR_Minv", codegen_options);
-  mecali::generate_code(C, "ASM_CAESAR_C", codegen_options);
-  mecali::generate_code(G, "ASM_CAESAR_G", codegen_options);
-  //mecali::generate_code(fk_ee_pos, "mmo500_ppr_fk_ee_pos", codegen_options);
-   mecali::generate_code(fkrot_ee, "ASM_CAESAR_fkrot_ee", codegen_options);
-  mecali::generate_code(fk_ee, "ASM_CAESAR_fk_ee", codegen_options);
-  mecali::generate_code(fk, "ASM_CAESAR_fk", codegen_options);
-  mecali::generate_code(J_fd, "ASM_CAESAR_J_fd", codegen_options);
-  mecali::generate_code(J_id, "ASM_CAESAR_J_id", codegen_options);
+  mecali::generate_code(fd, "KARM_EM_fd", codegen_options);
+  mecali::generate_code(id, "KARM_EM_id", codegen_options);
+  mecali::generate_code(M, "KARM_EM_M", codegen_options);
+  mecali::generate_code(Minv, "KARM_EM_Minv", codegen_options);
+  mecali::generate_code(C, "KARM_EM_C", codegen_options);
+  mecali::generate_code(G, "KARM_EM_G", codegen_options);
 
-  robot_model.generate_json("ASM_CAESAR.json");
+  mecali::generate_code(fkrot_ee, "KARM_EM_fkrot_ee", codegen_options);
+  mecali::generate_code(fk_ee, "KARM_EM_fk_ee", codegen_options);
+  mecali::generate_code(fk, "KARM_EM_fk", codegen_options);
+  mecali::generate_code(J_fd, "KARM_EM_J_fd", codegen_options);
+  mecali::generate_code(J_id, "KARM_EM_J_id", codegen_options);
+  mecali::generate_code(J_s, "KARM_EM_J_s", codegen_options);
+  mecali::generate_code(J_b, "KARM_EM_J_b", codegen_options);
+
+  robot_model.generate_json("KARM_EM.json");
 
   // std::cout << fd << std::endl;
 }

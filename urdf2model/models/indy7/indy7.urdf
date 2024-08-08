@@ -84,7 +84,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://indy7_description/meshes/stl/Indy7_0.stl"/>
+        <mesh filename="meshes/stl/Indy7_0.stl"/>
       </geometry>
       <material name="metal_grey"/>
     </visual>
@@ -99,7 +99,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://indy7_description/meshes/stl/Indy7_1.stl"/>
+        <mesh filename="meshes/stl/Indy7_1.stl"/>
       </geometry>
       <material name="metal_grey"/>
     </visual>
@@ -114,13 +114,13 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://indy7_description/meshes/stl/Indy7_2.stl"/>
+        <mesh filename="meshes/stl/Indy7_2.stl"/>
       </geometry>
       <material name="metal_grey"/>
     </visual>
 
     <inertial>
-			<origin xyz="-0.29477536 -0.00002361 0.04762554" rpy="0 0 0"/>
+			<origin xyz="-0.29616699 0.00002254 0.04483069" rpy="0 0 0"/>
 			<mass value="5.84766553"/>
 			<inertia ixx="+0.03599743" iyy="+0.72293306" izz="+0.70024119" ixy="-0.00004693" iyz="+0.00000176" ixz="-0.05240346"/>
 		</inertial>
@@ -129,7 +129,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://indy7_description/meshes/stl/Indy7_3.stl"/>
+        <mesh filename="meshes/stl/Indy7_3.stl"/>
       </geometry>
       <material name="metal_grey"/>
     </visual>
@@ -144,7 +144,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://indy7_description/meshes/stl/Indy7_4.stl"/>
+        <mesh filename="meshes/stl/Indy7_4.stl"/>
       </geometry>
       <material name="metal_grey"/>
     </visual>
@@ -159,7 +159,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://indy7_description/meshes/stl/Indy7_5.stl"/>
+        <mesh filename="meshes/stl/Indy7_5.stl"/>
       </geometry>
       <material name="metal_grey"/>
     </visual>
@@ -174,7 +174,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://indy7_description/meshes/stl/Indy7_6.stl"/>
+        <mesh filename="meshes/stl/Indy7_6.stl"/>
       </geometry>
       <material name="metal_grey"/>
     </visual>

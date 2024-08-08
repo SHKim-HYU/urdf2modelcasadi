@@ -269,6 +269,17 @@ ${CASADI_LIB}
 pinocchio::pinocchio
            )
 
+## HYU Mobile
+add_executable( mobile_example
+mobile_example.cpp
+)
+target_link_libraries( mobile_example
+
+${PROJECT_NAME}
+${CASADI_LIB}
+pinocchio::pinocchio
+           )
+
 ## HYU Mobile Manipulator
 add_executable( hyumm_example
               hyumm_example.cpp
