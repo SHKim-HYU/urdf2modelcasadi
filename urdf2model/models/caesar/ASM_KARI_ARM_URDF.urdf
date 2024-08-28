@@ -3,7 +3,7 @@
      Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
      For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
 <robot
-  name="ASM_KARI_ARM_URDF">
+  name="KARM_EM">
  <link
     name="world">
   </link>
@@ -39,7 +39,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://ASM_KARI_ARM_URDF/meshes/base.STL" />
+          filename="meshes/ASM_J0.STL" />
       </geometry>
       <material
         name="">
@@ -53,7 +53,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://ASM_KARI_ARM_URDF/meshes/base.STL" />
+          filename="meshes/ASM_J0.STL" />
       </geometry>
     </collision>
   </link>
@@ -81,7 +81,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://ASM_KARI_ARM_URDF/meshes/link1.STL" />
+          filename="meshes/ASM_J1.STL" />
       </geometry>
       <material
         name="">
@@ -95,7 +95,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://ASM_KARI_ARM_URDF/meshes/link1.STL" />
+          filename="meshes/ASM_J1.STL" />
       </geometry>
     </collision>
   </link>
@@ -139,7 +139,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://ASM_KARI_ARM_URDF/meshes/link2.STL" />
+          filename="meshes/ASM_J2.STL" />
       </geometry>
       <material
         name="">
@@ -153,7 +153,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://ASM_KARI_ARM_URDF/meshes/link2.STL" />
+          filename="meshes/ASM_J2.STL" />
       </geometry>
     </collision>
   </link>
@@ -197,7 +197,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://ASM_KARI_ARM_URDF/meshes/link3.STL" />
+          filename="meshes/ASM_J3.STL" />
       </geometry>
       <material
         name="">
@@ -211,7 +211,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://ASM_KARI_ARM_URDF/meshes/link3.STL" />
+          filename="meshes/ASM_J3.STL" />
       </geometry>
     </collision>
   </link>
@@ -255,7 +255,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://ASM_KARI_ARM_URDF/meshes/link4.STL" />
+          filename="meshes/ASM_J4.STL" />
       </geometry>
       <material
         name="">
@@ -269,7 +269,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://ASM_KARI_ARM_URDF/meshes/link4.STL" />
+          filename="meshes/ASM_J4.STL" />
       </geometry>
     </collision>
   </link>
@@ -277,7 +277,7 @@
     name="joint4"
     type="revolute">
     <origin
-      xyz="0.0 0.08800000 0.80000000"
+      xyz="0.0 -0.088 0.8"
       rpy="0 0 0" />
     <parent
       link="link3" />
@@ -313,7 +313,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://ASM_KARI_ARM_URDF/meshes/link5.STL" />
+          filename="meshes/ASM_J5.STL" />
       </geometry>
       <material
         name="">
@@ -327,7 +327,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://ASM_KARI_ARM_URDF/meshes/link5.STL" />
+          filename="meshes/ASM_J5.STL" />
       </geometry>
     </collision>
   </link>
@@ -335,7 +335,7 @@
     name="joint5"
     type="revolute">
     <origin
-      xyz="0.0 0.10400000 0.13100000"
+      xyz="0.0 -0.10400000 0.13100000"
       rpy="0 0 0" />
     <parent
       link="link4" />
@@ -371,7 +371,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://ASM_KARI_ARM_URDF/meshes/link6.STL" />
+          filename="meshes/ASM_J6.STL" />
       </geometry>
       <material
         name="">
@@ -385,7 +385,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://ASM_KARI_ARM_URDF/meshes/link6.STL" />
+          filename="meshes/ASM_J6.STL" />
       </geometry>
     </collision>
   </link>
@@ -393,7 +393,7 @@
     name="joint6"
     type="revolute">
     <origin
-      xyz="0.0 0.07100000 0.40800000 "
+      xyz="0.0 -0.07100000 0.40800000 "
       rpy="0 0 0" />
     <parent
       link="link5" />
@@ -429,7 +429,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://ASM_KARI_ARM_URDF/meshes/link7.STL" />
+          filename="meshes/ASM_J7.STL" />
       </geometry>
       <material
         name="">
@@ -443,7 +443,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://ASM_KARI_ARM_URDF/meshes/link7.STL" />
+          filename="meshes/ASM_J7.STL" />
       </geometry>
     </collision>
   </link>
@@ -451,7 +451,7 @@
     name="joint7"
     type="revolute">
     <origin
-      xyz="0.0 0.12100000 0.08800000"
+      xyz="0.0 -0.12100000 0.08800000"
       rpy="0 0 0" />
     <parent
       link="link6" />
