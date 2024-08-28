@@ -269,6 +269,29 @@ ${CASADI_LIB}
 pinocchio::pinocchio
            )
 
+
+## HYU Mobile floating
+add_executable( hyumob_floating_example
+hyumob_floating_example.cpp
+)
+target_link_libraries( hyumob_floating_example
+
+${PROJECT_NAME}
+${CASADI_LIB}
+pinocchio::pinocchio
+           )
+
+## HYU Mobile offset left
+add_executable( hyumob_offset_l_example
+hyumob_offset_l_example.cpp
+)
+target_link_libraries( hyumob_offset_l_example
+
+${PROJECT_NAME}
+${CASADI_LIB}
+pinocchio::pinocchio
+           )
+
 ## HYU Mobile
 add_executable( mobile_example
 mobile_example.cpp
@@ -285,6 +308,60 @@ add_executable( hyumm_example
               hyumm_example.cpp
               )
 target_link_libraries( hyumm_example
+
+       ${PROJECT_NAME}
+       ${CASADI_LIB}
+       pinocchio::pinocchio
+                         )
+
+
+## HYU Mobile Manipulator floating
+add_executable( hyumm_floating_example
+hyumm_floating_example.cpp
+)
+target_link_libraries( hyumm_floating_example
+
+${PROJECT_NAME}
+${CASADI_LIB}
+pinocchio::pinocchio
+           )
+
+## HYU Mobile Manipulator multi
+add_executable( hyumm_multi_example
+hyumm_multi_example.cpp
+)
+target_link_libraries( hyumm_multi_example
+
+${PROJECT_NAME}
+${CASADI_LIB}
+pinocchio::pinocchio
+           )
+
+## HYU Mobile Manipulator offset
+add_executable( hyumm_offset_l_example
+hyumm_offset_l_example.cpp
+)
+target_link_libraries( hyumm_offset_l_example
+
+${PROJECT_NAME}
+${CASADI_LIB}
+pinocchio::pinocchio
+           )
+add_executable( hyumm_offset_r_example
+hyumm_offset_r_example.cpp
+)
+target_link_libraries( hyumm_offset_r_example
+
+${PROJECT_NAME}
+${CASADI_LIB}
+pinocchio::pinocchio
+          )
+
+## indy7 floating
+add_executable( indy7_floating_example
+              indy7_floating_example.cpp
+              )
+target_link_libraries( indy7_floating_example
 
        ${PROJECT_NAME}
        ${CASADI_LIB}
