@@ -90,4 +90,24 @@
       </geometry>
     </collision>
   </link>  
+<joint name="base_flange" type="fixed">
+    <parent link="base_link"/>
+    <child link="link0"/>
+    <origin xyz="0.3 0 0.228" rpy="0 0 0"/>
+  </joint>
+  <link name="link0">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/stl/Indy7_0.stl"/>
+      </geometry>
+      <material name="metal_grey"/>
+    </visual>
+
+    <inertial>
+      <origin xyz="0.00131966 -0.00000218 0.03212832" rpy="0 0 0"/>
+      <mass value="1.67030785"/>
+      <inertia ixx="+0.00661309" iyy="+0.00644765" izz="+0.00792090" ixy="+0.00000183" iyz="-0.00000027" ixz="+0.00002695"/>
+    </inertial>
+  </link>
 </robot>

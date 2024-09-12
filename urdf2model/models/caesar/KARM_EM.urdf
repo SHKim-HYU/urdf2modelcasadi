@@ -15,23 +15,23 @@
     <parent
       link="world" />
     <child
-      link="ASM_J1_EM" />
+      link="ASM_LINK_0_EM" />
   </joint>
   <link
-    name="ASM_J1_EM">
+    name="ASM_LINK_0_EM">
     <inertial>
       <origin
-        xyz="0 0 0"
+        xyz="0.00152399 0.00000000 0.03933482"
         rpy="0 0 0" />
       <mass
-        value="4.48218" />
+        value="0.47278619  " />
       <inertia
-        ixx="0.04755097476"
-        ixy="0.0"
-        ixz="0.0"
-        iyy="0.04755157166"
-        iyz="0.00000000081"
-        izz="0.00981063776" />
+        ixx="0.00125767"
+        ixy="0.00000000"
+        ixz="-0.00000937"
+        iyy="0.00121998"
+        iyz="0.00000000"
+        izz="0.00175696" />
     </inertial>
     <visual>
       <origin
@@ -39,7 +39,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="../meshes/ASM_J1_EM.STL" />
+          filename="../meshes/ASM_LINK_0_EM.STL" />
       </geometry>
       <material
         name="">
@@ -53,61 +53,21 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="../meshes/ASM_J1_EM.STL" />
+          filename="../meshes/ASM_LINK_0_EM.STL" />
       </geometry>
     </collision>
   </link>
-  <link
-    name="ASM_HOUSING_T_EM">
-    <inertial>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <mass
-        value="6.06194090" />
-	<inertia
-	  ixx="0.13634948"
-	  ixy="0.0"
-	  ixz="0.0"
-	  iyy="0.08969039"
-	  iyz="-0.01060860"
-	  izz="0.06171552" />
-
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="../meshes/ASM_HOUSING_T_EM.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="../meshes/ASM_HOUSING_T_EM.STL" />
-      </geometry>
-    </collision>
-  </link>
+  
   <joint
     name="joint1"
     type="revolute">
     <origin
-      xyz="0 0 0.128"
+      xyz="0 0 0.094"
       rpy="0 0 0" />
     <parent
-      link="ASM_J1_EM" />
+      link="ASM_LINK_0_EM" />
     <child
-      link="ASM_HOUSING_T_EM" />
+      link="ASM_LINK_1_EM" />
     <axis
       xyz="0 0 1" />
     <limit
@@ -116,79 +76,22 @@
       effort="100"
       velocity="10" />
   </joint>
+
   <link
-    name="ASM_J2_EM">
+    name="ASM_LINK_1_EM">
     <inertial>
       <origin
-        xyz="0 0 0"
+        xyz="0.00001170 -0.00037848 0.06504455"
         rpy="0 0 0" />
       <mass
-        value="10.09583" />
+        value="8.41295125" />
 	<inertia
-	  ixx="0.96199126140"
-	  ixy="0.00000015468"
-	  ixz="-0.00000015422"
-	  iyy="0.90760532210"
-	  iyz="-0.19430884455"
-	  izz="0.07843312705" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="../meshes/ASM_J2_EM.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="../meshes/ASM_J2_EM.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="joint2"
-    type="revolute">
-    <origin
-      xyz="0 0.0915 0.128"
-      rpy="0 0 0" />
-    <parent
-      link="ASM_HOUSING_T_EM" />
-    <child
-      link="ASM_J2_EM" />
-    <axis
-      xyz="0 1 0" />
-    <limit
-      lower="-3.14"
-      upper="3.14"
-      effort="100"
-      velocity="10" />
-  </joint>
-  <link
-    name="ASM_J3_EM">
-    <inertial>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <mass
-        value="6.64337" />
-	<inertia
-	  ixx="0.64375247576"
-	  ixy="-0.00109731075"
-	  ixz="0.01355317066"
-	  iyy="0.63648860904"
-	  iyz="0.05017798413"
-	  izz="0.02421839629" />
+	  ixx="0.14045859"
+	  ixy="0.00006722"
+	  ixz="0.00002585"
+	  iyy="0.04741080"
+	  iyz="-0.00069634"
+	  izz="0.11149444" />
 
     </inertial>
     <visual>
@@ -197,7 +100,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="../meshes/ASM_J3_EM.STL" />
+          filename="../meshes/ASM_LINK_1_EM.STL" />
       </geometry>
       <material
         name="">
@@ -211,20 +114,81 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="../meshes/ASM_J3_EM.STL" />
+          filename="../meshes/ASM_LINK_1_EM.STL" />
       </geometry>
     </collision>
   </link>
+
+  <joint
+    name="joint2"
+    type="revolute">
+    <origin
+      xyz="0 -0.104 0.105"
+      rpy="0 0 0" />
+    <parent
+      link="ASM_LINK_1_EM" />
+    <child
+      link="ASM_LINK_2_EM" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="100"
+      velocity="10" />
+  </joint>
+  
+  <link
+    name="ASM_LINK_2_EM">
+    <inertial>
+      <origin
+        xyz="-0.00000660 -0.08341316 0.02269460"
+        rpy="0 0 0" />
+      <mass
+        value="1.08543372  " />
+	<inertia
+	  ixx="0.00639468"
+	  ixy="0.00000000"
+	  ixz="0.00000000"
+	  iyy="0.00535377"
+	  iyz="-0.00011198"
+	  izz="0.00509106" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/ASM_LINK_2_EM.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/ASM_LINK_2_EM.STL" />
+      </geometry>
+    </collision>
+  </link>
+
   <joint
     name="joint3"
     type="revolute">
     <origin
-      xyz="0 0.0915 0.4695"
+      xyz="0 -0.088 0.129"
       rpy="0 0.0 0" />
     <parent
-      link="ASM_J2_EM" />
+      link="ASM_LINK_2_EM" />
     <child
-      link="ASM_J3_EM" />
+      link="ASM_LINK_3_EM" />
     <axis
       xyz="0.0 0 1.0" />
     <limit
@@ -233,21 +197,22 @@
       effort="100"
       velocity="10" />
   </joint>
+  
   <link
-    name="ASM_J4_EM">
+    name="ASM_LINK_3_EM">
     <inertial>
       <origin
-        xyz="0 0 0"
+        xyz="0.00004610 0.02821693 0.40811988"
         rpy="0 0 0" />
       <mass
-        value="9.04321" />
+        value="10.45122582" />
 	<inertia
-	  ixx="0.11502666593"
-	  ixy="0.00000015468"
-	  ixz="0.00000015422"
-	  iyy="0.06945354590"
-	  iyz="0.04379192449"
-	  izz="0.06550536877" />
+	  ixx="1.29662423"
+	  ixy="-0.00001221"
+	  ixz="-0.00009397"
+	  iyy="1.27485730"
+	  iyz="0.11346658"
+	  izz="0.04708463" />
 
     </inertial>
     <visual>
@@ -256,7 +221,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="../meshes/ASM_J4_EM.STL" />
+          filename="../meshes/ASM_LINK_3_EM.STL" />
       </geometry>
       <material
         name="">
@@ -270,20 +235,21 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="../meshes/ASM_J4_EM.STL" />
+          filename="../meshes/ASM_LINK_3_EM.STL" />
       </geometry>
     </collision>
   </link>
+
   <joint
     name="joint4"
     type="revolute">
     <origin
-      xyz="0.0 -0.0915 0.3955"
+      xyz="0 0.104 0.798"
       rpy="0 0 0" />
     <parent
-      link="ASM_J3_EM" />
+      link="ASM_LINK_3_EM" />
     <child
-      link="ASM_J4_EM" />
+      link="ASM_LINK_4_EM" />
     <axis
       xyz="0 1 0" />
     <limit
@@ -292,21 +258,22 @@
       effort="100"
       velocity="10" />
   </joint>
+  
   <link
-    name="ASM_J5_EM">
+    name="ASM_LINK_4_EM">
     <inertial>
       <origin
-        xyz="0 0 0"
+        xyz="0.00000000 0.08341316 .02269460"
         rpy="0 0 0" />
       <mass
-        value="6.64337" />
-	<inertia
-	  ixx="0.64404882848"
-	  ixy="-0.00000008053"
-	  ixz="-0.00000051590"
-	  iyy="0.63648860904"
-	  iyz="0.05018998090"
-	  izz="0.02392204357" />
+        value="1.08543372" />
+  	<inertia
+  	  ixx="0.00639468"
+  	  ixy="0.00000000"
+  	  ixz="0.00000000"
+  	  iyy="0.00535377"
+  	  iyz="0.00011198"
+  	  izz="0.00509106" />
     </inertial>
     <visual>
       <origin
@@ -314,7 +281,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="../meshes/ASM_J5_EM.STL" />
+          filename="../meshes/ASM_LINK_4_EM.STL" />
       </geometry>
       <material
         name="">
@@ -328,20 +295,21 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="../meshes/ASM_J5_EM.STL" />
+          filename="../meshes/ASM_LINK_4_EM.STL" />
       </geometry>
     </collision>
   </link>
+
   <joint
     name="joint5"
     type="revolute">
     <origin
-      xyz="0 -0.0915 0.1395"
+      xyz="0 0.088 0.129"
       rpy="0 0 0" />
     <parent
-      link="ASM_J4_EM" />
+      link="ASM_LINK_4_EM" />
     <child
-      link="ASM_J5_EM" />
+      link="ASM_LINK_5_EM" />
     <axis
       xyz="0 0 1" />
     <limit
@@ -350,22 +318,22 @@
       effort="100"
       velocity="10" />
   </joint>
+  
   <link
-    name="ASM_J6_EM">
+    name="ASM_LINK_5_EM">
     <inertial>
       <origin
-        xyz="0 0 0"
+        xyz="0.00005661 .03465433 0.20951316"
         rpy="0 0 0" />
       <mass
-        value="8.75036" />
+        value="8.50980173 " />
 	<inertia
-	  ixx="0.16834751634"
-	  ixy="-0.00000007826"
-	  ixz="0.00000017014"
-	  iyy="0.12157470853"
-	  iyz="-0.01389167842"
-	  izz="0.06831569063" />
-
+	  ixx="0.34047402"
+	  ixy="-0.00001524"
+	  ixz="-0.00000841"
+	  iyy="0.32060604"
+	  iyz="0.05743782"
+	  izz="0.03826184" />
     </inertial>
     <visual>
       <origin
@@ -373,7 +341,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="../meshes/ASM_J6_EM.STL" />
+          filename="../meshes/ASM_LINK_5_EM.STL" />
       </geometry>
       <material
         name="">
@@ -387,20 +355,21 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="../meshes/ASM_J6_EM.STL" />
+          filename="../meshes/ASM_LINK_5_EM.STL" />
       </geometry>
     </collision>
   </link>
+
   <joint
     name="joint6"
     type="revolute">
     <origin
-      xyz="0 -0.0915 0.3955"
+      xyz="0 0.104 0.406"
       rpy="0 0 0" />
     <parent
-      link="ASM_J5_EM" />
+      link="ASM_LINK_5_EM" />
     <child
-      link="ASM_J6_EM" />
+      link="ASM_LINK_6_EM" />
     <axis
       xyz="0 1 0" />
     <limit
@@ -409,21 +378,23 @@
       effort="100"
       velocity="10" />
   </joint>
+  
   <link
-    name="ASM_J7_EM">
+    name="ASM_LINK_6_EM">
     <inertial>
       <origin
-        xyz="0 0 0"
+        xyz="0.00003699 0.09037378 0.01691099"
         rpy="0 0 0" />
       <mass
-        value="4.49347" />
+        value="5.47249246" />
 	<inertia
-	  ixx="0.01157801213"
-	  ixy="0.0"
-	  ixz="0.0"
-	  iyy="0.01157801213"
-	  iyz="0.0"
-	  izz="0.00894926406" />
+	  ixx="0.10881375"
+	  ixy="0.00008416"
+	  ixz="0.00001630"
+	  iyy="0.10731442"
+	  iyz="-0.00076964"
+	  izz="0.01577483" />
+
     </inertial>
     <visual>
       <origin
@@ -431,7 +402,67 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="../meshes/ASM_J7_EM.STL" />
+          filename="../meshes/ASM_LINK_6_EM.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/ASM_LINK_6_EM.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint
+    name="joint7"
+    type="revolute">
+    <origin
+      xyz="0 0.088 0.121"
+      rpy="0 0 0" />
+    <parent
+      link="ASM_LINK_6_EM" />
+    <child
+      link="ASM_LINK_7_EM" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="100"
+      velocity="10" />
+  </joint>
+  
+  <link
+    name="ASM_LINK_7_EM">
+    <inertial>
+      <origin
+        xyz="0.00000000 0.00001181 0.04502358"
+        rpy="0 0 0" />
+      <mass
+        value="0.47459064 " />
+	<inertia
+	  ixx="0.00106970"
+	  ixy="0.0"
+	  ixz="0.0"
+	  iyy="0.00107008"
+	  iyz="-0.00000024"
+	  izz="0.00141764" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/ASM_LINK_7_EM.STL" />
       </geometry>
       <material
         name="">
@@ -445,68 +476,53 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="../meshes/ASM_J7_EM.STL" />
+          filename="../meshes/ASM_LINK_7_EM.STL" />
       </geometry>
     </collision>
   </link>
+
   <joint
-    name="joint7"
-    type="revolute">
-    <origin
-      xyz="0 -0.0915 0.128"
-      rpy="0 0 0" />
-    <parent
-      link="ASM_J6_EM" />
-    <child
-      link="ASM_J7_EM" />
-    <axis
-      xyz="0 0 1" />
-    <limit
-      lower="-3.14"
-      upper="3.14"
-      effort="100"
-      velocity="10" />
-  </joint>
-    <link  name="eef_link">
-    <inertial>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <mass
-        value="0.0" />
-      <inertia
-        ixx="0.000000000001"
-        ixy="0.0"
-        ixz="0.0"
-        iyy="0.000000000001"
-        iyz="0.0"
-        izz="0.000000000001" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <box size="0.01 0.01 0.01"/>
-      </geometry>
-      <material
-        name="red">
-        <color
-          rgba="1.0 0 0 1" />
-      </material>
-    </visual>    
-  </link>
-
-
-    <joint
     name="eef_fixed"
     type="fixed">
     <origin
       xyz="0 0 0.087"
       rpy="0 0 0" />
     <parent
-      link="ASM_J7_EM" />
+      link="ASM_LINK_7_EM" />
     <child
       link="eef_link" />
   </joint>    
+  
+  <link  name="eef_link">
+  <inertial>
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <mass
+      value="0.0" />
+    <inertia
+      ixx="0.000000000001"
+      ixy="0.0"
+      ixz="0.0"
+      iyy="0.000000000001"
+      iyz="0.0"
+      izz="0.000000000001" />
+  </inertial>
+  <visual>
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <geometry>
+      <box size="0.01 0.01 0.01"/>
+    </geometry>
+    <material
+      name="red">
+      <color
+        rgba="1.0 0 0 1" />
+    </material>
+  </visual>    
+</link>
+
+
+    
 </robot>

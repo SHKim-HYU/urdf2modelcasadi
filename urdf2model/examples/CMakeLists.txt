@@ -368,6 +368,17 @@ target_link_libraries( indy7_floating_example
        pinocchio::pinocchio
                          )
 
+## indy7 dualarm
+add_executable( indy7_dualarm_example
+              indy7_dualarm_example.cpp
+              )
+target_link_libraries( indy7_dualarm_example
+
+       ${PROJECT_NAME}
+       ${CASADI_LIB}
+       pinocchio::pinocchio
+                         )
+
 ## Test ABI: Indy7
 add_executable( test_abi_indy7_example
               test_abi_indy7_example.cpp
