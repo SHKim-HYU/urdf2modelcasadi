@@ -48,53 +48,21 @@
           <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
       </inertial>
   </link>
-  <joint name="world_joint" type="fixed">
-    <origin rpy="2.094407804564866 0 0" xyz="0 0 0"/>
+  <joint name="world_joint_l" type="fixed">
+    <origin rpy="2.094407804564866 0 3.141592" xyz="0 0.1551 1.2924"/>
     <parent link="world"/>
-    <child link="link0"/>
+    <child link="link0_l"/>
   </joint>
-  <!-- Link0 -->
-  <gazebo reference="link0">
-    <mu1>0.2</mu1>
-    <mu2>0.2</mu2>
-    <material>Gazebo/White</material>
-  </gazebo>
-  <!-- Link0 -->
-  <gazebo reference="link1">
-    <mu1>0.2</mu1>
-    <mu2>0.2</mu2>
-    <material>Gazebo/White</material>
-  </gazebo>
-  <!-- Link2 -->
-  <gazebo reference="link2">
-    <mu1>0.2</mu1>
-    <mu2>0.2</mu2>
-    <material>Gazebo/White</material>
-  </gazebo>
-  <gazebo reference="link3">
-    <mu1>0.2</mu1>
-    <mu2>0.2</mu2>
-    <material>Gazebo/White</material>
-  </gazebo>
-  <gazebo reference="link4">
-    <mu1>0.2</mu1>
-    <mu2>0.2</mu2>
-    <material>Gazebo/White</material>
-  </gazebo>
-  <gazebo reference="link5">
-    <mu1>0.2</mu1>
-    <mu2>0.2</mu2>
-    <material>Gazebo/White</material>
-  </gazebo>
-  <gazebo reference="link6">
-    <mu1>0.2</mu1>
-    <mu2>0.2</mu2>
-    <material>Gazebo/White</material>
-  </gazebo>
+  <!-- <joint name="world_joint_r" type="fixed">
+    <origin rpy="2.094407804564866 0 0" xyz="0 -0.1551 1.2924"/>
+    <parent link="world"/>
+    <child link="link0_r"/>
+  </joint> -->
+  
   <!-- <material name="grey"> <color rgba="0.5 0.5 0.5 1"/> </material> -->
-  <link name="link0">
+  <link name="link0_l">
     <visual>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <origin rpy="0 0 3.141592" xyz="0 0 0"/>
       <geometry>
         <mesh filename="meshes/stl/Indy7_0.stl"/>
       </geometry>
@@ -107,7 +75,7 @@
       <inertia ixx="+0.00661309" iyy="+0.00644765" izz="+0.00792090" ixy="+0.00000183" iyz="-0.00000027" ixz="+0.00002695"/>
     </inertial>
   </link>
-  <link name="link1">
+  <link name="link1_l">
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
@@ -122,7 +90,7 @@
       <inertia ixx="+0.35065005" iyy="+0.30479800" izz="+0.06003147" ixy="+0.00011931" iyz="-0.10984447" ixz="-0.00037553"/>
     </inertial>
   </link>
-  <link name="link2">
+  <link name="link2_l">
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
@@ -137,7 +105,7 @@
 			<inertia ixx="+0.03599743" iyy="+0.72293306" izz="+0.70024119" ixy="-0.00004693" iyz="+0.00000176" ixz="-0.05240346"/>
 		</inertial>
   </link>
-  <link name="link3">
+  <link name="link3_l">
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
@@ -152,7 +120,7 @@
 			<inertia ixx="+0.01617210" iyy="+0.11364055" izz="+0.10022522" ixy="-0.00011817" iyz="-0.00004371" ixz="+0.03341882"/>
 		</inertial>
   </link>
-  <link name="link4">
+  <link name="link4_l">
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
@@ -167,7 +135,7 @@
 			<inertia ixx="+0.02798891" iyy="+0.01443076" izz="+0.01496211" ixy="+0.00003893" iyz="-0.01266296" ixz="-0.00004768"/>
 		</inertial>
   </link>
-  <link name="link5">
+  <link name="link5_l">
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
@@ -182,7 +150,7 @@
 			<inertia ixx="+0.01105297" iyy="+0.03698291" izz="+0.02754795" ixy="+0.00005517" iyz="-0.00003740" ixz="-0.01481977"/>
 		</inertial>
   </link>
-  <link name="link6">
+  <link name="link6_l">
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
@@ -197,119 +165,222 @@
 			<inertia ixx="+0.00078982" iyy="+0.00079764" izz="+0.00058319" ixy="-0.00000034" iyz="-0.00000508" ixz="+0.00000083"/>
 		</inertial>
   </link>
-  <link name="tcp">
+  <link name="tcp_l">
     <inertial>
       <mass value="0.000001" />
       <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
       <inertia ixx="0.000001" ixy="0" ixz="0" iyy="0.000001" iyz="0" izz="0.000001" />
     </inertial>
   </link>
-  <joint name="joint0" type="revolute">
-    <parent link="link0"/>
-    <child link="link1"/>
+<!-- 
+  <link name="link0_r">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/stl/Indy7_0.stl"/>
+      </geometry>
+      <material name="metal_grey"/>
+    </visual>
+
+    <inertial>
+      <origin xyz="0.00131966 -0.00000218 0.03212832" rpy="0 0 0"/>
+      <mass value="1.67030785"/>
+      <inertia ixx="+0.00661309" iyy="+0.00644765" izz="+0.00792090" ixy="+0.00000183" iyz="-0.00000027" ixz="+0.00002695"/>
+    </inertial>
+  </link>
+  <link name="link1_r">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/stl/Indy7_1.stl"/>
+      </geometry>
+      <material name="metal_grey"/>
+    </visual>
+
+    <inertial>
+      <origin xyz="-0.00023749 -0.04310313 0.13245396" rpy="0 0 0"/>
+      <mass value="11.44444535"/>
+      <inertia ixx="+0.35065005" iyy="+0.30479800" izz="+0.06003147" ixy="+0.00011931" iyz="-0.10984447" ixz="-0.00037553"/>
+    </inertial>
+  </link>
+  <link name="link2_r">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/stl/Indy7_2.stl"/>
+      </geometry>
+      <material name="metal_grey"/>
+    </visual>
+
+    <inertial>
+			<origin xyz="-0.29616699 0.00002254 0.04483069" rpy="0 0 0"/>
+			<mass value="5.84766553"/>
+			<inertia ixx="+0.03599743" iyy="+0.72293306" izz="+0.70024119" ixy="-0.00004693" iyz="+0.00000176" ixz="-0.05240346"/>
+		</inertial>
+  </link>
+  <link name="link3_r">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/stl/Indy7_3.stl"/>
+      </geometry>
+      <material name="metal_grey"/>
+    </visual>
+
+    <inertial>
+			<origin xyz="-0.16804016 0.00021421 -0.07000383" rpy="0 0 0"/>
+			<mass value="2.68206064"/>
+			<inertia ixx="+0.01617210" iyy="+0.11364055" izz="+0.10022522" ixy="-0.00011817" iyz="-0.00004371" ixz="+0.03341882"/>
+		</inertial>
+  </link>
+  <link name="link4_r">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/stl/Indy7_4.stl"/>
+      </geometry>
+      <material name="metal_grey"/>
+    </visual>
+
+    <inertial>
+			<origin xyz="-0.00026847 -0.07098440 0.07649128" rpy="0 0 0"/>
+			<mass value="2.12987371"/>
+			<inertia ixx="+0.02798891" iyy="+0.01443076" izz="+0.01496211" ixy="+0.00003893" iyz="-0.01266296" ixz="-0.00004768"/>
+		</inertial>
+  </link>
+  <link name="link5_r">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/stl/Indy7_5.stl"/>
+      </geometry>
+      <material name="metal_grey"/>
+    </visual>
+
+    <inertial>
+			<origin xyz="-0.09796232 -0.00023114 0.06445892" rpy="0 0 0"/>
+			<mass value="2.22412271"/>
+			<inertia ixx="+0.01105297" iyy="+0.03698291" izz="+0.02754795" ixy="+0.00005517" iyz="-0.00003740" ixz="-0.01481977"/>
+		</inertial>
+  </link>
+  <link name="link6_r">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/stl/Indy7_6.stl"/>
+      </geometry>
+      <material name="metal_grey"/>
+    </visual>
+
+    <inertial>
+			<origin xyz="0.00008147 -0.00046556 0.03079097" rpy="0 0 0"/>
+			<mass value="0.38254932"/>
+			<inertia ixx="+0.00078982" iyy="+0.00079764" izz="+0.00058319" ixy="-0.00000034" iyz="-0.00000508" ixz="+0.00000083"/>
+		</inertial>
+  </link>
+  <link name="tcp_r">
+    <inertial>
+      <mass value="0.000001" />
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+      <inertia ixx="0.000001" ixy="0" ixz="0" iyy="0.000001" iyz="0" izz="0.000001" />
+    </inertial>
+  </link> -->
+
+
+  <joint name="joint0_l" type="revolute">
+    <parent link="link0_l"/>
+    <child link="link1_l"/>
     <origin rpy="0 0 0" xyz="0 0 0.0775"/>
     <axis xyz="0 0 1"/>
     <limit effort="10" lower="-3.0543261909900763" upper="3.0543261909900763" velocity="1"/>
   </joint>
-  <joint name="joint1" type="revolute">
-    <parent link="link1"/>
-    <child link="link2"/>
+  <joint name="joint1_l" type="revolute">
+    <parent link="link1_l"/>
+    <child link="link2_l"/>
     <origin rpy="1.5707963267948966 1.5707963267948966 0" xyz="0 -0.10900000 0.22200000"/>
     <axis xyz="0 0 1"/>
     <limit effort="10" lower="-3.0543261909900763" upper="3.0543261909900763" velocity="1"/>
   </joint>
-  <joint name="joint2" type="revolute">
-    <parent link="link2"/>
-    <child link="link3"/>
+  <joint name="joint2_l" type="revolute">
+    <parent link="link2_l"/>
+    <child link="link3_l"/>
     <origin rpy="0 0 0" xyz="-0.45000000 +0.00000000 -0.03050000"/>
     <axis xyz="0 0 1"/>
     <limit effort="10" lower="-3.0543261909900763" upper="3.0543261909900763" velocity="1"/>
   </joint>
-  <joint name="joint3" type="revolute">
-    <parent link="link3"/>
-    <child link="link4"/>
+  <joint name="joint3_l" type="revolute">
+    <parent link="link3_l"/>
+    <child link="link4_l"/>
     <origin rpy="-1.5707963267948966 0 1.5707963267948966" xyz="-0.26700000 +0.00000000 -0.07500000"/>
     <axis xyz="0 0 1"/>
     <limit effort="10" lower="-3.0543261909900763" upper="3.0543261909900763" velocity="1"/>
   </joint>
-  <joint name="joint4" type="revolute">
-    <parent link="link4"/>
-    <child link="link5"/>
+  <joint name="joint4_l" type="revolute">
+    <parent link="link4_l"/>
+    <child link="link5_l"/>
     <origin rpy="1.5707963267948966 1.5707963267948966 0" xyz="+0.00000000 -0.11400000 +0.08300000"/>
     <axis xyz="0 0 1"/>
     <limit effort="10" lower="-3.0543261909900763" upper="3.0543261909900763" velocity="1"/>
   </joint>
-  <joint name="joint5" type="revolute">
-    <parent link="link5"/>
-    <child link="link6"/>
+  <joint name="joint5_l" type="revolute">
+    <parent link="link5_l"/>
+    <child link="link6_l"/>
     <origin rpy="-1.5707963267948966 0 1.5707963267948966" xyz="-0.16800000 +0.00000000 +0.06900000"/>
     <axis xyz="0 0 1"/>
     <limit effort="10" lower="-3.752457891787808" upper="3.752457891787808" velocity="1"/>
   </joint>
-  <joint name="indy7_tcp" type="fixed">
-    <parent link="link6"/>
-    <child link="tcp"/>
-    <origin rpy="0 0 0" xyz="0 0 0.23"/>
+  <joint name="indy7_tcp_l" type="fixed">
+    <parent link="link6_l"/>
+    <child link="tcp_l"/>
+    <origin rpy="0 0 0" xyz="0 0 0.06"/>
   </joint>
-  <transmission name="tran0">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="joint0">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="motor0">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
-  <transmission name="tran1">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="joint1">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="motor1">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
-  <transmission name="tran2">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="joint2">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="motor2">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
-  <transmission name="tran3">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="joint3">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="motor3">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
-  <transmission name="tran4">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="joint4">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="motor4">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
-  <transmission name="tran5">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="joint5">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="motor5">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
+
+  <!-- <joint name="joint0_r" type="revolute">
+    <parent link="link0_r"/>
+    <child link="link1_r"/>
+    <origin rpy="0 0 0" xyz="0 0 0.0775"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" lower="-3.0543261909900763" upper="3.0543261909900763" velocity="1"/>
+  </joint>
+  <joint name="joint1_r" type="revolute">
+    <parent link="link1_r"/>
+    <child link="link2_r"/>
+    <origin rpy="1.5707963267948966 1.5707963267948966 0" xyz="0 -0.10900000 0.22200000"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" lower="-3.0543261909900763" upper="3.0543261909900763" velocity="1"/>
+  </joint>
+  <joint name="joint2_r" type="revolute">
+    <parent link="link2_r"/>
+    <child link="link3_r"/>
+    <origin rpy="0 0 0" xyz="-0.45000000 +0.00000000 -0.03050000"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" lower="-3.0543261909900763" upper="3.0543261909900763" velocity="1"/>
+  </joint>
+  <joint name="joint3_r" type="revolute">
+    <parent link="link3_r"/>
+    <child link="link4_r"/>
+    <origin rpy="-1.5707963267948966 0 1.5707963267948966" xyz="-0.26700000 +0.00000000 -0.07500000"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" lower="-3.0543261909900763" upper="3.0543261909900763" velocity="1"/>
+  </joint>
+  <joint name="joint4_r" type="revolute">
+    <parent link="link4_r"/>
+    <child link="link5_r"/>
+    <origin rpy="1.5707963267948966 1.5707963267948966 0" xyz="+0.00000000 -0.11400000 +0.08300000"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" lower="-3.0543261909900763" upper="3.0543261909900763" velocity="1"/>
+  </joint>
+  <joint name="joint5_r" type="revolute">
+    <parent link="link5_r"/>
+    <child link="link6_r"/>
+    <origin rpy="-1.5707963267948966 0 1.5707963267948966" xyz="-0.16800000 +0.00000000 +0.06900000"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" lower="-3.752457891787808" upper="3.752457891787808" velocity="1"/>
+  </joint>
+  <joint name="indy7_tcp_r" type="fixed">
+    <parent link="link6_r"/>
+    <child link="tcp_r"/>
+    <origin rpy="0 0 0" xyz="0 0 0.06"/>
+  </joint> -->
 </robot>
 

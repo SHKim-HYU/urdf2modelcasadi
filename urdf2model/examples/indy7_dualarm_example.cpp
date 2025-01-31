@@ -41,23 +41,23 @@ int main()
   casadi::Function G = robot_model.generalized_gravity();
   
   // // Set function for forward kinematics
-  std::vector<std::string> required_Frames = {"joint0", "joint1", "joint2", "joint3", "joint4", "joint5", "indy7_tcp"};
+  // std::vector<std::string> required_Frames = {"joint0_l", "joint1_l", "joint2_l", "joint3_l", "joint4_l", "joint5_l", "indy7_tcp_l", "joint0_r", "joint1_r", "joint2_r", "joint3_r", "joint4_r", "joint5_r", "indy7_tcp_r"};
+  std::vector<std::string> required_Frames = {"joint0_l", "joint1_l", "joint2_l", "joint3_l", "joint4_l", "joint5_l", "indy7_tcp_l"};
 
-  std::string end_effector_name = "indy7_tcp";
+  std::string end_effector_left = "indy7_tcp_l";
+  // std::string end_effector_right = "indy7_tcp_r";
 
-  casadi::Function fkpos_ee = robot_model.forward_kinematics("position", end_effector_name);
-  casadi::Function fkrot_ee = robot_model.forward_kinematics("rotation", end_effector_name);
-  casadi::Function fk_ee = robot_model.forward_kinematics("transformation", end_effector_name);
+
+  casadi::Function fk_ee = robot_model.forward_kinematics("transformation", end_effector_left);
+  // casadi::Function fk_ee_r = robot_model.forward_kinematics("transformation", end_effector_right);
   casadi::Function fk = robot_model.forward_kinematics("transformation",required_Frames);
 
-  casadi::Function J_fd = robot_model.forward_dynamics_derivatives("jacobian");
-  casadi::Function J_id = robot_model.inverse_dynamics_derivatives("jacobian");
+  casadi::Function J_s = robot_model.kinematic_jacobian("space", end_effector_left);
+  casadi::Function J_b = robot_model.kinematic_jacobian("body", end_effector_left);
 
-  casadi::Function J_s = robot_model.kinematic_jacobian("space", end_effector_name);
-  casadi::Function J_b = robot_model.kinematic_jacobian("body", end_effector_name);
+  // casadi::Function J_s_r = robot_model.kinematic_jacobian("space", end_effector_right);
+  // casadi::Function J_b_r = robot_model.kinematic_jacobian("body", end_effector_right);
 
-  casadi::Function dJ_s = robot_model.jacobian_derivative("space", end_effector_name);
-  casadi::Function dJ_b = robot_model.jacobian_derivative("body", end_effector_name);
 
   // casadi::Function fk       = robot_model.forward_kinematics("transformation", required_Frames);
 
@@ -107,24 +107,20 @@ int main()
   codegen_options["c"] = true;
   codegen_options["save"] = true;
   mecali::generate_code(fd, "indy7_dualarm_fd", codegen_options);
-  mecali::generate_code(CoM_x, "indy7_dualarm_CoM_x", codegen_options);
   mecali::generate_code(id, "indy7_dualarm_id", codegen_options);
   mecali::generate_code(M, "indy7_dualarm_M", codegen_options);
   mecali::generate_code(Minv, "indy7_dualarm_Minv", codegen_options);
   mecali::generate_code(C, "indy7_dualarm_C", codegen_options);
   mecali::generate_code(G, "indy7_dualarm_G", codegen_options);
-  //mecali::generate_code(fk_ee_pos, "mmo500_ppr_fk_ee_pos", codegen_options);
-   mecali::generate_code(fkrot_ee, "indy7_dualarm_fkrot_ee", codegen_options);
   mecali::generate_code(fk_ee, "indy7_dualarm_fk_ee", codegen_options);
+  // mecali::generate_code(fk_ee_r, "indy7_dualarm_fk_ee_r", codegen_options);
   mecali::generate_code(fk, "indy7_dualarm_fk", codegen_options);
-  mecali::generate_code(J_fd, "indy7_dualarm_J_fd", codegen_options);
-  mecali::generate_code(J_id, "indy7_dualarm_J_id", codegen_options);
   mecali::generate_code(J_s, "indy7_dualarm_J_s", codegen_options);
   mecali::generate_code(J_b, "indy7_dualarm_J_b", codegen_options);
-  mecali::generate_code(dJ_s, "indy7_dualarm_dJ_s", codegen_options);
-  mecali::generate_code(dJ_b, "indy7_dualarm_dJ_b", codegen_options);
+  // mecali::generate_code(J_s_r, "indy7_dualarm_J_s_r", codegen_options);
+  // mecali::generate_code(J_b_r, "indy7_dualarm_J_b_r", codegen_options);
 
-  robot_model.generate_json("indy7.json");
+  robot_model.generate_json("indy7_dualarm.json");
 
   // std::cout << fd << std::endl;
 }

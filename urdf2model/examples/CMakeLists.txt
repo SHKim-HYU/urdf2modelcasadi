@@ -52,6 +52,28 @@ target_link_libraries( kinova_2dof_example
                       pinocchio::pinocchio
                     )
 
+## KARM_EM example
+add_executable( karm_em_example
+              karm_em_example.cpp
+              )
+target_link_libraries( karm_em_example
+
+       ${PROJECT_NAME}
+       ${CASADI_LIB}
+       pinocchio::pinocchio
+                         )
+
+## KARM_EQM example
+add_executable( karm_eqm_example
+              karm_eqm_example.cpp
+              )
+target_link_libraries( karm_eqm_example
+
+       ${PROJECT_NAME}
+       ${CASADI_LIB}
+       pinocchio::pinocchio
+                         )
+
 ## Caesar example
 add_executable( caesar_example
               caesar_example.cpp
@@ -159,6 +181,28 @@ target_link_libraries( scara_example
                       ${CASADI_LIB}
                       pinocchio::pinocchio
                     )
+
+## KUKA KR250 example
+add_executable( kuka_kr250_example
+               kuka_kr250_example.cpp
+             )
+target_link_libraries( kuka_kr250_example
+
+                      ${PROJECT_NAME}
+                      ${CASADI_LIB}
+                      pinocchio::pinocchio
+                                        )
+
+## KUKA KR120 example
+add_executable( kuka_kr120_example
+               kuka_kr120_example.cpp
+             )
+target_link_libraries( kuka_kr120_example
+
+                      ${PROJECT_NAME}
+                      ${CASADI_LIB}
+                      pinocchio::pinocchio
+                                        )
 
 ## KUKA KR60 example
 add_executable( kuka_kr60_example
@@ -538,6 +582,17 @@ add_executable( indy7_example
               indy7_example.cpp
               )
 target_link_libraries( indy7_example
+
+       ${PROJECT_NAME}
+       ${CASADI_LIB}
+       pinocchio::pinocchio
+                         )
+
+## indy7_v2
+add_executable( indy7_v2_example
+              indy7_v2_example.cpp
+              )
+target_link_libraries( indy7_v2_example
 
        ${PROJECT_NAME}
        ${CASADI_LIB}
