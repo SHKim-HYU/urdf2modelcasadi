@@ -609,4 +609,14 @@ target_link_libraries( indyrp2_example
        ${CASADI_LIB}
        pinocchio::pinocchio
                          )
+                         
+## HD-yl012
+add_executable( yl012_example
+              yl012_example.cpp
+              )
+target_link_libraries( yl012_example
 
+       ${PROJECT_NAME}
+       ${CASADI_LIB}
+       pinocchio::pinocchio
+                         )
