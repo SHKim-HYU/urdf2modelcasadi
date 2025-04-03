@@ -620,3 +620,14 @@ target_link_libraries( yl012_example
        ${CASADI_LIB}
        pinocchio::pinocchio
                          )
+                        
+## HYU-SPA
+add_executable( hyu_spa_example
+              hyu_spa_example.cpp
+              )
+target_link_libraries( hyu_spa_example
+
+       ${PROJECT_NAME}
+       ${CASADI_LIB}
+       pinocchio::pinocchio
+                         )
