@@ -163,19 +163,15 @@ casadi::Function get_jacobian_derivative(CasadiModel &cas_model, CasadiData &cas
     pinocchio::casadi::copy( v_sx, v_casadi );
     
     // call the forward kinematics function
-    pinocchio::computeJointJacobians(cas_model,   cas_data,    q_casadi);
     pinocchio::computeJointJacobiansTimeVariation(cas_model,   cas_data,    q_casadi,   v_casadi);
     pinocchio::updateFramePlacements(cas_model,   cas_data);
 
-    CasadiData::Matrix6x Jrh(6,cas_model.nv); Jrh.fill(0);
     CasadiData::Matrix6x dJrh(6,cas_model.nv); dJrh.fill(0);
     int frame_idx=cas_model.getFrameId(frame_name);
     
     if (frame.compare("space") == 0)
     {
-        CasadiScalar J_b(6,cas_model.nq);
         CasadiScalar dJ_s(6,cas_model.nv);
-        pinocchio::getFrameJacobian(cas_model, cas_data, frame_idx, pinocchio::WORLD, Jrh);
         pinocchio::getFrameJacobianTimeVariation(cas_model, cas_data, frame_idx, pinocchio::WORLD, dJrh);
         pinocchio::casadi::copy(dJrh, dJ_s);
 
@@ -185,9 +181,7 @@ casadi::Function get_jacobian_derivative(CasadiModel &cas_model, CasadiData &cas
     }
     else if (frame.compare("body") == 0)
     {        
-        CasadiScalar J_b(6,cas_model.nq);
         CasadiScalar dJ_b(6,cas_model.nv);
-        pinocchio::getFrameJacobian(cas_model, cas_data, frame_idx, pinocchio::LOCAL, Jrh);
         pinocchio::getFrameJacobianTimeVariation(cas_model, cas_data, frame_idx, pinocchio::LOCAL, dJrh);
         pinocchio::casadi::copy(dJrh, dJ_b);
 
