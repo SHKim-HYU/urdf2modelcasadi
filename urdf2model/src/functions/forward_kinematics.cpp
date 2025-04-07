@@ -173,7 +173,9 @@ casadi::Function get_jacobian_derivative(CasadiModel &cas_model, CasadiData &cas
     
     if (frame.compare("space") == 0)
     {
+        CasadiScalar J_b(6,cas_model.nq);
         CasadiScalar dJ_s(6,cas_model.nv);
+        pinocchio::getFrameJacobian(cas_model, cas_data, frame_idx, pinocchio::WORLD, Jrh);
         pinocchio::getFrameJacobianTimeVariation(cas_model, cas_data, frame_idx, pinocchio::WORLD, dJrh);
         pinocchio::casadi::copy(dJrh, dJ_s);
 
@@ -183,7 +185,9 @@ casadi::Function get_jacobian_derivative(CasadiModel &cas_model, CasadiData &cas
     }
     else if (frame.compare("body") == 0)
     {        
+        CasadiScalar J_b(6,cas_model.nq);
         CasadiScalar dJ_b(6,cas_model.nv);
+        pinocchio::getFrameJacobian(cas_model, cas_data, frame_idx, pinocchio::LOCAL, Jrh);
         pinocchio::getFrameJacobianTimeVariation(cas_model, cas_data, frame_idx, pinocchio::LOCAL, dJrh);
         pinocchio::casadi::copy(dJrh, dJ_b);
 
