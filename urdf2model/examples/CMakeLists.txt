@@ -631,3 +631,14 @@ target_link_libraries( hyu_spa_example
        ${CASADI_LIB}
        pinocchio::pinocchio
                          )
+
+## Space Arm
+add_executable( space_arm_example
+space_arm_example.cpp
+)
+target_link_libraries( space_arm_example
+
+${PROJECT_NAME}
+${CASADI_LIB}
+pinocchio::pinocchio
+           )
