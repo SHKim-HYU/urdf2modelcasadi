@@ -52,6 +52,9 @@ int main()
   casadi::Function J_s = robot_model.kinematic_jacobian("space", end_effector_name);
   casadi::Function J_b = robot_model.kinematic_jacobian("body", end_effector_name);
 
+  casadi::Function dJ_s = robot_model.jacobian_derivative("space", end_effector_name);
+  casadi::Function dJ_b = robot_model.jacobian_derivative("body", end_effector_name);
+
   // casadi::Function fk       = robot_model.forward_kinematics("transformation", required_Frames);
 
   //casadi::Function fk_ee_pos = robot_model.forward_kinematics("position", end_effector_name);
@@ -110,6 +113,8 @@ int main()
   mecali::generate_code(fk, "indy7_v2_fk", codegen_options);
   mecali::generate_code(J_s, "indy7_v2_J_s", codegen_options);
   mecali::generate_code(J_b, "indy7_v2_J_b", codegen_options);
+  mecali::generate_code(dJ_s, "indy7_v2_dJ_s", codegen_options);
+  mecali::generate_code(dJ_b, "indy7_v2_dJ_b", codegen_options);
 
   robot_model.generate_json("indy7_v2.json");
 
