@@ -402,6 +402,28 @@ pinocchio::pinocchio
           )
 
 ## indy7 floating
+add_executable( indy_floating_example
+indy_floating_example.cpp
+)
+target_link_libraries( indy_floating_example
+
+${PROJECT_NAME}
+${CASADI_LIB}
+pinocchio::pinocchio
+            )
+
+## indy7 floating
+add_executable( indy_floating_inv_example
+indy_floating_inv_example.cpp
+)
+target_link_libraries( indy_floating_inv_example
+
+${PROJECT_NAME}
+${CASADI_LIB}
+pinocchio::pinocchio
+            )
+
+## indy7 floating
 add_executable( indy7_floating_example
               indy7_floating_example.cpp
               )
@@ -631,7 +653,29 @@ target_link_libraries( yl012_example
        ${CASADI_LIB}
        pinocchio::pinocchio
                          )
-                        
+
+## HD-yl012-SAT
+add_executable( yl012_sat_example
+              yl012_sat_example.cpp
+              )
+target_link_libraries( yl012_sat_example
+
+       ${PROJECT_NAME}
+       ${CASADI_LIB}
+       pinocchio::pinocchio
+                         )
+
+## HD-yl012-SAT-CORE
+add_executable( yl012_sat_core_example
+              yl012_sat_core_example.cpp
+              )
+target_link_libraries( yl012_sat_core_example
+
+       ${PROJECT_NAME}
+       ${CASADI_LIB}
+       pinocchio::pinocchio
+                         )
+                         
 ## HYU-SPA
 add_executable( hyu_spa_example
               hyu_spa_example.cpp
