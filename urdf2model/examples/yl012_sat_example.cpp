@@ -115,7 +115,7 @@ int main()
   mecali::generate_code(Minv, "yl012_sat_Minv", codegen_options);
   mecali::generate_code(C, "yl012_sat_C", codegen_options);
   mecali::generate_code(G, "yl012_sat_G", codegen_options);
-  //mecali::generate_code(fk_ee_pos, "mmo500_ppr_fk_ee_pos", codegen_options);
+  
    mecali::generate_code(fk_ft, "yl012_sat_fk_ft", codegen_options);
   mecali::generate_code(fk_ee, "yl012_sat_fk_ee", codegen_options);
   mecali::generate_code(fk, "yl012_sat_fk", codegen_options);

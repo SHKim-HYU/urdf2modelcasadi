@@ -41,12 +41,14 @@ int main()
   casadi::Function G = robot_model.generalized_gravity();
   
   // // Set function for forward kinematics
-  std::vector<std::string> required_Frames = {"joint0", "joint1", "joint2", "joint3", "joint4", "fixed5", "ft_fixed", "joint5"};
+  std::vector<std::string> required_Frames = {"joint0", "joint1", "joint2", "joint3", "joint4", "joint5", "ft_fixed", "tcp_CoM_fixed"};
 
-  std::string end_effector_name = "joint5";
+  std::string ft_frame_name = "ft_fixed";
+  std::string end_effector_name = "tcp_CoM_fixed";
 
   casadi::Function fkpos_ee = robot_model.forward_kinematics("position", end_effector_name);
   casadi::Function fkrot_ee = robot_model.forward_kinematics("rotation", end_effector_name);
+  casadi::Function fk_ft = robot_model.forward_kinematics("transformation", ft_frame_name);
   casadi::Function fk_ee = robot_model.forward_kinematics("transformation", end_effector_name);
   casadi::Function fk = robot_model.forward_kinematics("transformation",required_Frames);
 
@@ -114,7 +116,7 @@ int main()
   mecali::generate_code(C, "yl012_sat_core_C", codegen_options);
   mecali::generate_code(G, "yl012_sat_core_G", codegen_options);
   //mecali::generate_code(fk_ee_pos, "mmo500_ppr_fk_ee_pos", codegen_options);
-   mecali::generate_code(fkrot_ee, "yl012_sat_core_fkrot_ee", codegen_options);
+   mecali::generate_code(fk_ft, "yl012_sat_core_fk_ft", codegen_options);
   mecali::generate_code(fk_ee, "yl012_sat_core_fk_ee", codegen_options);
   mecali::generate_code(fk, "yl012_sat_core_fk", codegen_options);
   mecali::generate_code(J_fd, "yl012_sat_core_J_fd", codegen_options);

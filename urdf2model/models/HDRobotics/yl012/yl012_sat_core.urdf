@@ -169,7 +169,7 @@
 
  
 
-  <link name="link_ft">
+  <link name="link_flange">
   <inertial>
     <origin xyz="-0.03225391 -0.0007543 0.02048268" rpy="0 0 0" />
     <mass value="0.71" />
@@ -190,6 +190,14 @@
         <mesh filename="meshes/link_FT.stl"    />
       </geometry>
     </collision>
+  </link>
+
+  <link name="link_ft">
+  <inertial>
+    <origin xyz="0 0 00" rpy="0 0 0" />
+    <mass value="00" />
+    <inertia ixx="0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" />
+  </inertial>
   </link>
 
   <link name="link_core">
@@ -213,6 +221,14 @@
         <mesh filename="meshes/link_CORE100.stl"    />
       </geometry>
     </collision>
+  </link>
+
+  <link name="link_tcp_CoM">
+  <inertial>
+    <origin xyz="0 0 00" rpy="0 0 0" />
+    <mass value="00" />
+    <inertia ixx="0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" />
+  </inertial>
   </link>
 
   <link name="link_sat">
@@ -312,20 +328,27 @@
   </joint>
 
  
-  <joint name="ft_fixed" type="fixed">
+  <joint name="flange_fixed" type="fixed">
     <origin xyz="0 0 0.07385" rpy="0 0 0" />
     <parent link="link6" />
+    <child link="link_flange" />
+    <axis xyz="0 0 0" />
+  </joint>
+
+  <joint name="ft_fixed" type="fixed">
+    <origin xyz="0 0 0.0312" rpy="0 0 0" />
+    <parent link="link_flange" />
     <child link="link_ft" />
     <axis xyz="0 0 0" />
   </joint>
 
   <joint name="core_fixed" type="fixed">
-    <origin xyz="0 0 0.0412" rpy="0 0 0" />
+    <origin xyz="0 0 0.01" rpy="0 0 0" />
     <parent link="link_ft" />
     <child link="link_core" />
     <axis xyz="0 0 0" />
   </joint>
-
+  
   <joint name="joint5" type="revolute">
     <origin xyz="0 0 0.1765" rpy="0 0 0" />
     <parent link="link_core" />
@@ -336,5 +359,12 @@
       upper="3.141592"
       effort="54.88"
       velocity="3.141592653589793" />    
+  </joint>
+
+  <joint name="tcp_CoM_fixed" type="fixed">
+    <origin xyz="-0.00001166 -0.00000932 -0.04673098" rpy="0 0 0" />
+    <parent link="link_sat" />
+    <child link="link_tcp_CoM" />
+    <axis xyz="0 0 0" />
   </joint>
 </robot>
