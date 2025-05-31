@@ -342,16 +342,9 @@
     <axis xyz="0 0 0" />
   </joint>
 
-  <joint name="tcp_CoM_fixed" type="fixed">
-    <origin xyz="-0.00001166 -0.00000932 0.13976902" rpy="0 0 0" />
-    <parent link="link_ft" />
-    <child link="link_tcp_CoM" />
-    <axis xyz="0 0 0" />
-  </joint>
-
   <joint name="core_fixed" type="fixed">
-    <origin xyz="0.00001166 0.00000932 -0.12976902" rpy="0 0 0" />
-    <parent link="link_tcp_CoM" />
+    <origin xyz="0 0 0.01" rpy="0 0 0" />
+    <parent link="link_ft" />
     <child link="link_core" />
     <axis xyz="0 0 0" />
   </joint>
@@ -368,10 +361,10 @@
       velocity="3.141592653589793" />    
   </joint>
 
-  <!-- <joint name="tcp_CoM_fixed" type="fixed">
+  <joint name="tcp_CoM_fixed" type="fixed">
     <origin xyz="-0.00001166 -0.00000932 -0.04673098" rpy="0 0 0" />
     <parent link="link_sat" />
     <child link="link_tcp_CoM" />
     <axis xyz="0 0 0" />
-  </joint> -->
+  </joint>
 </robot>
