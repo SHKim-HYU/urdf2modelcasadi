@@ -697,3 +697,25 @@ ${PROJECT_NAME}
 ${CASADI_LIB}
 pinocchio::pinocchio
            )
+## Space Arm_base
+add_executable( space_arm_tip_example
+space_arm_tip_example.cpp
+)
+target_link_libraries( space_arm_tip_example
+
+${PROJECT_NAME}
+${CASADI_LIB}
+pinocchio::pinocchio
+           )
+
+## Space Arm_tip
+add_executable( space_arm_base_example
+space_arm_base_example.cpp
+)
+target_link_libraries( space_arm_base_example
+
+${PROJECT_NAME}
+${CASADI_LIB}
+pinocchio::pinocchio
+           )
+
