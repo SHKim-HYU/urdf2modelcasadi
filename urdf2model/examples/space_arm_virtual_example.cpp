@@ -9,7 +9,7 @@ int main()
   // ---------------------------------------------------------------------
   // Create a model based on a URDF file
   // ---------------------------------------------------------------------
-  std::string urdf_filename = ws_path+"/urdf2model/models/space_arm/space_arm_tip.urdf";
+  std::string urdf_filename = ws_path+"/urdf2model/models/space_arm/space_arm_virtual.urdf";
   // Instantiate a Serial_Robot object called robot_model
   mecali::Serial_Robot robot_model;
   // Define (optinal) gravity vector to be used
@@ -42,9 +42,9 @@ int main()
   casadi::Function G = robot_model.generalized_gravity();
   
   // // Set function for forward kinematics
-  std::vector<std::string> required_Frames = {"joint1", "joint2", "joint3", "joint4", "joint5", "joint6", "joint7", "joint_tcp"};
+  std::vector<std::string> required_Frames = {"VirtualJoint_px", "VirtualJoint_py", "VirtualJoint_pz", "VirtualJoint_rx", "VirtualJoint_ry", "VirtualJoint_rz", "joint0", "joint1", "joint2", "joint3", "joint4", "joint5", "joint6", "tcp_fixed"};
 
-  std::string end_effector_name = "joint_tcp";
+  std::string end_effector_name = "tcp_fixed";
 
   casadi::Function fkpos_ee = robot_model.forward_kinematics("position", end_effector_name);
   casadi::Function fkrot_ee = robot_model.forward_kinematics("rotation", end_effector_name);
@@ -107,26 +107,26 @@ int main()
   mecali::Dictionary codegen_options;
   codegen_options["c"] = true;
   codegen_options["save"] = true;
-  mecali::generate_code(fd, "space_arm_tip_fd", codegen_options);
-  mecali::generate_code(CoM_x, "space_arm_tip_CoM_x", codegen_options);
-  mecali::generate_code(J_com, "space_arm_tip_J_com", codegen_options);
-  mecali::generate_code(id, "space_arm_tip_id", codegen_options);
-  mecali::generate_code(M, "space_arm_tip_M", codegen_options);
-  mecali::generate_code(Minv, "space_arm_tip_Minv", codegen_options);
-  mecali::generate_code(C, "space_arm_tip_C", codegen_options);
-  mecali::generate_code(G, "space_arm_tip_G", codegen_options);
+  mecali::generate_code(fd, "space_arm_virtual_fd", codegen_options);
+  mecali::generate_code(CoM_x, "space_arm_virtual_CoM_x", codegen_options);
+  mecali::generate_code(J_com, "space_arm_virtual_J_com", codegen_options);
+  mecali::generate_code(id, "space_arm_virtual_id", codegen_options);
+  mecali::generate_code(M, "space_arm_virtual_M", codegen_options);
+  mecali::generate_code(Minv, "space_arm_virtual_Minv", codegen_options);
+  mecali::generate_code(C, "space_arm_virtual_C", codegen_options);
+  mecali::generate_code(G, "space_arm_virtual_G", codegen_options);
   //mecali::generate_code(fk_ee_pos, "mmo500_ppr_fk_ee_pos", codegen_options);
-   mecali::generate_code(fkrot_ee, "space_arm_tip_fkrot_ee", codegen_options);
-  mecali::generate_code(fk_ee, "space_arm_tip_fk_ee", codegen_options);
-  mecali::generate_code(fk, "space_arm_tip_fk", codegen_options);
-  mecali::generate_code(J_fd, "space_arm_tip_J_fd", codegen_options);
-  mecali::generate_code(J_id, "space_arm_tip_J_id", codegen_options);
-  mecali::generate_code(J_s, "space_arm_tip_J_s", codegen_options);
-  mecali::generate_code(J_b, "space_arm_tip_J_b", codegen_options);
-  mecali::generate_code(dJ_s, "space_arm_tip_dJ_s", codegen_options);
-  mecali::generate_code(dJ_b, "space_arm_tip_dJ_b", codegen_options);
+   mecali::generate_code(fkrot_ee, "space_arm_virtual_fkrot_ee", codegen_options);
+  mecali::generate_code(fk_ee, "space_arm_virtual_fk_ee", codegen_options);
+  mecali::generate_code(fk, "space_arm_virtual_fk", codegen_options);
+  mecali::generate_code(J_fd, "space_arm_virtual_J_fd", codegen_options);
+  mecali::generate_code(J_id, "space_arm_virtual_J_id", codegen_options);
+  mecali::generate_code(J_s, "space_arm_virtual_J_s", codegen_options);
+  mecali::generate_code(J_b, "space_arm_virtual_J_b", codegen_options);
+  mecali::generate_code(dJ_s, "space_arm_virtual_dJ_s", codegen_options);
+  mecali::generate_code(dJ_b, "space_arm_virtual_dJ_b", codegen_options);
 
-  robot_model.generate_json("space_arm_tip.json");
+  robot_model.generate_json("space_arm_virtual.json");
 
   // std::cout << fd << std::endl;
 }
