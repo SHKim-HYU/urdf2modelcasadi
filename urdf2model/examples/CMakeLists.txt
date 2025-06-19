@@ -237,6 +237,16 @@ target_link_libraries( atlas_example
                       pinocchio::pinocchio
                                         )
 
+## g1_29dof example
+add_executable( g1_29dof_example
+               g1_29dof_example.cpp
+             )
+target_link_libraries( g1_29dof_example
+
+                      ${PROJECT_NAME}
+                      ${CASADI_LIB}
+                      pinocchio::pinocchio
+                                        )
 
 ## Rubion example
 add_executable( rubion_example
