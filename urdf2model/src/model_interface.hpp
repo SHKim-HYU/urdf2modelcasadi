@@ -61,7 +61,7 @@ namespace mecali
     Eigen::VectorXd barycentric_params;
     
     Eigen::VectorXd rotorGearRatio;
-    Eigen::VectorXd robotInertia;
+    Eigen::VectorXd rotorInertia;
     Eigen::VectorXd armature;
 
     // METHODS
@@ -84,7 +84,7 @@ namespace mecali
     void import_reduced_model(std::string filename, std::vector<std::string> joints_to_lock_by_name, Eigen::VectorXd robot_configuration);
     void import_reduced_model(std::string filename, std::vector<std::string> joints_to_lock_by_name, Eigen::VectorXd robot_configuration, Eigen::Vector3d gravity_vector);
 
-    void set_armature(Eigen::VectorXd _gearRatio, Eigen::VectorXd _inertia);
+    void set_armature();
 
     void generate_json(std::string filename);
 

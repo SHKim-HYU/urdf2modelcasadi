@@ -9,7 +9,7 @@ int main()
   // ---------------------------------------------------------------------
   // Create a model based on a URDF file
   // ---------------------------------------------------------------------
-  std::string urdf_filename = ws_path+"/urdf2model/models/caesar/KARM_EM.urdf";
+  std::string urdf_filename = ws_path+"/urdf2model/models/HYU/caesar/KARM_EM.urdf";
   // Instantiate a Serial_Robot object called robot_model
   mecali::Serial_Robot robot_model;
   // Define (optinal) gravity vector to be used
@@ -23,6 +23,11 @@ int main()
   // q = [global_base_position, global_base_quaternion, joint_positions]
   // v = [local_base_velocity_linear, local_base_velocity_angular, joint_velocities]
   // See: https://github.com/stack-of-tasks/pinocchio/issues/1137
+
+  robot_model.rotorGearRatio << 160, 160, 160, 160, 160, 160, 160;
+  robot_model.rotorInertia << 1.24e-4, 1.24e-4, 1.24e-4, 1.24e-4, 1.24e-4, 1.24e-4, 1.24e-4;
+
+  robot_model.set_armature();
 
   // Print some information related to the imported model (boundaries, frames, DoF, etc)
   robot_model.print_model_data();

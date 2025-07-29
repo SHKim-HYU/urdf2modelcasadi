@@ -62,9 +62,9 @@ namespace mecali
     this->_n_bodies = model.nbodies;
     this->_model = model;
 
-    this->rotorGearRatio = Eigen::VectorXd::Zero(model.njoints);
-    this->rotorInertia = Eigen::VectorXd::Zero(model.njoints);
-    this->armature = Eigen::VectorXd::Zero(model.njoints);
+    this->rotorGearRatio = Eigen::VectorXd::Zero(model.nq);
+    this->rotorInertia = Eigen::VectorXd::Zero(model.nq);
+    this->armature = Eigen::VectorXd::Zero(model.nq);
 
     std::vector<std::string> joint_types(this->n_dof);
     for (int i = 1; i < this->n_joints; i++)
@@ -345,14 +345,16 @@ namespace mecali
     this->import_reduced_model(filename, joints_to_lock_by_intid, pinocchio::neutral(model), pinocchio::Model::gravity981);
   }
 
-  void Serial_Robot::set_armature((Eigen::VectorXd _gearRatio, Eigen::VectorXd _inertia))
+  void Serial_Robot::set_armature()
   {
-    this->rotorGearRatio = _gearRatio;
-    this->rotorInertia = _inertia;
+    this->armature = this->rotorGearRatio.array().square() * this->rotorInertia.array();    
+    this->_model.armature = this->armature;
 
-    this->armature = this->rotorGearRatio.array().square() * this->rotorInertia.array();
+    // Casadi model
+    CasadiModel casadi_model = this->_model.cast<CasadiScalar>();
+    CasadiData casadi_data(casadi_model);
 
-    
+    this->_casadi_model = casadi_model;
   }
 
   void Serial_Robot::generate_json(std::string filename)
@@ -703,6 +705,8 @@ namespace mecali
     print_indent("Joint configuration upper bounds = ", this->joint_pos_ub, 38);
     print_indent("Joint configuration lower bounds = ", this->joint_pos_lb, 38);
     print_indent("Joint velocity bounds = ", this->joint_vel_limit, 38);
+    print_indent("Joint Gear Ratio = ", this->rotorGearRatio, 38);
+    print_indent("Joint Rotor Inertia = ", this->rotorInertia, 38);
     print_indent("Barycentric parameters = ", this->barycentric_params, 45);
     std::cout << std::endl;
 
