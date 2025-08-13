@@ -42,7 +42,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="meshes/indy12_v2/link0.stl"/>
+        <mesh filename="meshes/stl/indy12_v2/link0.stl"/>
       </geometry>
       <material name="metal_grey"/>
     </visual>
@@ -57,7 +57,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="meshes/indy12_v2/link1.stl"/>
+        <mesh filename="meshes/stl/indy12_v2/link1.stl"/>
       </geometry>
       <material name="metal_grey"/>
     </visual>
@@ -72,7 +72,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="meshes/indy12_v2/link2.stl"/>
+        <mesh filename="meshes/stl/indy12_v2/link2.stl"/>
       </geometry>
       <material name="metal_grey"/>
     </visual>
@@ -87,14 +87,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="meshes/indy12_v2/link3.stl"/>
+        <mesh filename="meshes/stl/indy12_v2/link3.stl"/>
       </geometry>
       <material name="metal_grey"/>
     </visual>
 
     <inertial>
-      <origin rpy="0 0 0" xyz="0.00000177 0.01814888 0.13567452"/>
-      <mass value="5.0597333"/>
+      <origin rpy="0 0 0" xyz="0.00000177 0.01814888 0.21567452"/>
+      <mass value="8.45645221"/>
       <inertia ixx="+0.14750527" ixy="+0.00000067" ixz="+0.00000173" iyy="+0.14140192" iyz="+0.01943665" izz="+0.03100903"/>
     </inertial>
   </link>
@@ -102,7 +102,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="meshes/indy12_v2/link4.stl"/>
+        <mesh filename="meshes/stl/indy12_v2/link4.stl"/>
       </geometry>
       <material name="metal_grey"/>
     </visual>
@@ -117,7 +117,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="meshes/indy12_v2/link5.stl"/>
+        <mesh filename="meshes/stl/indy12_v2/link5.stl"/>
       </geometry>
       <material name="metal_grey"/>
     </visual>
@@ -132,7 +132,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="meshes/indy12_v2/link6.stl"/>
+        <mesh filename="meshes/stl/indy12_v2/link6.stl"/>
       </geometry>
       <material name="metal_grey"/>
     </visual>
@@ -147,7 +147,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="meshes/indy12_v2/link7.stl"/>
+        <mesh filename="meshes/stl/indy12_v2/link7.stl"/>
       </geometry>
       <material name="metal_grey"/>
     </visual>
