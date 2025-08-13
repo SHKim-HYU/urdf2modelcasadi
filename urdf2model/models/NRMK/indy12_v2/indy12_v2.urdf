@@ -42,7 +42,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="meshes/stl/indy12_v2/link0.stl"/>
+        <mesh filename="meshes/indy12_v2/link0.stl"/>
       </geometry>
       <material name="metal_grey"/>
     </visual>
@@ -57,7 +57,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="meshes/stl/indy12_v2/link1.stl"/>
+        <mesh filename="meshes/indy12_v2/link1.stl"/>
       </geometry>
       <material name="metal_grey"/>
     </visual>
@@ -72,7 +72,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="meshes/stl/indy12_v2/link2.stl"/>
+        <mesh filename="meshes/indy12_v2/link2.stl"/>
       </geometry>
       <material name="metal_grey"/>
     </visual>
@@ -87,14 +87,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="meshes/stl/indy12_v2/link3.stl"/>
+        <mesh filename="meshes/indy12_v2/link3.stl"/>
       </geometry>
       <material name="metal_grey"/>
     </visual>
 
     <inertial>
-      <origin rpy="0 0 0" xyz="0.00000177 0.01814888 0.21567452"/>
-      <mass value="8.45645221"/>
+      <origin rpy="0 0 0" xyz="0.00000177 0.01814888 0.13567452"/>
+      <mass value="5.0597333"/>
       <inertia ixx="+0.14750527" ixy="+0.00000067" ixz="+0.00000173" iyy="+0.14140192" iyz="+0.01943665" izz="+0.03100903"/>
     </inertial>
   </link>
@@ -102,7 +102,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="meshes/stl/indy12_v2/link4.stl"/>
+        <mesh filename="meshes/indy12_v2/link4.stl"/>
       </geometry>
       <material name="metal_grey"/>
     </visual>
@@ -117,7 +117,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="meshes/stl/indy12_v2/link5.stl"/>
+        <mesh filename="meshes/indy12_v2/link5.stl"/>
       </geometry>
       <material name="metal_grey"/>
     </visual>
@@ -132,7 +132,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="meshes/stl/indy12_v2/link6.stl"/>
+        <mesh filename="meshes/indy12_v2/link6.stl"/>
       </geometry>
       <material name="metal_grey"/>
     </visual>
@@ -147,7 +147,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="meshes/stl/indy12_v2/link7.stl"/>
+        <mesh filename="meshes/indy12_v2/link7.stl"/>
       </geometry>
       <material name="metal_grey"/>
     </visual>
@@ -158,6 +158,54 @@
       <inertia ixx="+0.00174119" ixy="0.00000018" ixz="+0.00000083" iyy="+0.00173263" iyz="-0.00000199" izz="+0.00223183"/>
     </inertial>
   </link>
+  <link name="tool_plange">
+    <!-- <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/stl/indy12_v2/link7.stl"/>
+      </geometry>
+      <material name="metal_grey"/>
+    </visual> -->
+
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0003115 -0.0005641 0.0364598"/>
+      <mass value="0.300"/>
+      <inertia ixx="+0.00174119" ixy="0.00000018" ixz="+0.00000083" iyy="+0.00173263" iyz="-0.00000199" izz="+0.00223183"/>
+    </inertial>
+  </link>
+
+  <link name="RFT64-6A01">
+    <!-- <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/stl/indy12_v2/link7.stl"/>
+      </geometry>
+      <material name="metal_grey"/>
+    </visual> -->
+
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0001815 -0.0001841 0.0154598"/>
+      <mass value="0.175"/>
+      <inertia ixx="+0.00174119" ixy="0.00000018" ixz="+0.00000083" iyy="+0.00173263" iyz="-0.00000199" izz="+0.00223183"/>
+    </inertial>
+  </link>
+
+  <link name="tool_changer">
+    <!-- <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/stl/indy12_v2/link7.stl"/>
+      </geometry>
+      <material name="metal_grey"/>
+    </visual> -->
+
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0003115 -0.0005641 0.0664598"/>
+      <mass value="2.125"/>
+      <inertia ixx="+0.00174119" ixy="0.00000018" ixz="+0.00000083" iyy="+0.00173263" iyz="-0.00000199" izz="+0.00223183"/>
+    </inertial>
+  </link>
+
   <link name="tcp">
     <inertial>
       <mass value="0.000001" />
@@ -215,8 +263,23 @@
     <axis xyz="0 0 1"/>
     <limit effort="10" lower="-3.0543261909900763" upper="3.0543261909900763" velocity="1"/>
   </joint>
-  <joint name="tcp_fixed" type="fixed">
+  <joint name="plange_fixed" type="fixed">
     <parent link="link7"/>
+    <child link="tool_plange"/>
+    <origin rpy="0 0 0" xyz="0 0 0.0841"/>
+  </joint>
+  <joint name="RFT_fixed" type="fixed">
+    <parent link="tool_plange"/>
+    <child link="RFT64-6A01"/>
+    <origin rpy="0 0 0" xyz="0 0 0.0641"/>
+  </joint>
+  <joint name="changer_fixed" type="fixed">
+    <parent link="RFT64-6A01"/>
+    <child link="tool_changer"/>
+    <origin rpy="0 0 0" xyz="0 0 0.03"/>
+  </joint>
+  <joint name="tcp_fixed" type="fixed">
+    <parent link="tool_changer"/>
     <child link="tcp"/>
     <origin rpy="0 0 0" xyz="0 0 0.0841"/>
   </joint>
