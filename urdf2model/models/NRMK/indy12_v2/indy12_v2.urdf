@@ -42,7 +42,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="meshes/stl/indy12_v2/link0.stl"/>
+        <mesh filename="meshes/indy12_v2/link0.stl"/>
       </geometry>
       <material name="metal_grey"/>
     </visual>
@@ -57,7 +57,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="meshes/stl/indy12_v2/link1.stl"/>
+        <mesh filename="meshes/indy12_v2/link1.stl"/>
       </geometry>
       <material name="metal_grey"/>
     </visual>
@@ -72,7 +72,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="meshes/stl/indy12_v2/link2.stl"/>
+        <mesh filename="meshes/indy12_v2/link2.stl"/>
       </geometry>
       <material name="metal_grey"/>
     </visual>
@@ -87,7 +87,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="meshes/stl/indy12_v2/link3.stl"/>
+        <mesh filename="meshes/indy12_v2/link3.stl"/>
       </geometry>
       <material name="metal_grey"/>
     </visual>
@@ -102,7 +102,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="meshes/stl/indy12_v2/link4.stl"/>
+        <mesh filename="meshes/indy12_v2/link4.stl"/>
       </geometry>
       <material name="metal_grey"/>
     </visual>
@@ -115,45 +115,45 @@
   </link>
   <link name="link5">
     <visual>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <origin rpy="0 0 3.141592" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="meshes/stl/indy12_v2/link5.stl"/>
+        <mesh filename="meshes/indy12_v2/link5.stl"/>
       </geometry>
       <material name="metal_grey"/>
     </visual>
 
     <inertial>
-      <origin rpy="0 0 0" xyz="0.00015551 -0.04669128 0.22088570"/>
+      <origin rpy="0 0 0" xyz="0.00015551 0.04669128 0.22088570"/>
       <mass value="5.05476208"/>
       <inertia ixx="0.10945505" ixy="-0.00008325" ixz="0.00008149" iyy="0.10032484" iyz="-0.02374104" izz="0.01927371"/>
     </inertial>
   </link>
   <link name="link6">
     <visual>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <origin rpy="0 0 3.141592" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="meshes/stl/indy12_v2/link6.stl"/>
+        <mesh filename="meshes/indy12_v2/link6.stl"/>
       </geometry>
       <material name="metal_grey"/>
     </visual>
 
     <inertial>
-      <origin rpy="0 0 0" xyz="-0.00014038 -0.00014038 0.02034922"/>
+      <origin rpy="0 0 0" xyz="-0.00014038 0.00014038 0.02034922"/>
       <mass value="3.54178915"/>
       <inertia ixx="0.00947309" ixy="0.00000368" ixz="-0.00000055" iyy="0.00901900" iyz="-0.00038601" izz="0.00603120"/>
     </inertial>
   </link>
   <link name="link7">
     <visual>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <origin rpy="0 0 3.141592" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="meshes/stl/indy12_v2/link7.stl"/>
+        <mesh filename="meshes/indy12_v2/link7.stl"/>
       </geometry>
       <material name="metal_grey"/>
     </visual>
 
     <inertial>
-      <origin rpy="0 0 0" xyz="0.0003115 -0.0005641 0.0364598"/>
+      <origin rpy="0 0 0" xyz="0.0003115 0.0005641 0.0364598"/>
       <mass value="1.00684783"/>
       <inertia ixx="+0.00174119" ixy="0.00000018" ixz="+0.00000083" iyy="+0.00173263" iyz="-0.00000199" izz="+0.00223183"/>
     </inertial>
@@ -162,7 +162,7 @@
     <!-- <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="meshes/stl/indy12_v2/link7.stl"/>
+        <mesh filename="meshes/indy12_v2/link7.stl"/>
       </geometry>
       <material name="metal_grey"/>
     </visual> -->
@@ -178,7 +178,7 @@
     <!-- <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="meshes/stl/indy12_v2/link7.stl"/>
+        <mesh filename="meshes/indy12_v2/link7.stl"/>
       </geometry>
       <material name="metal_grey"/>
     </visual> -->
@@ -194,7 +194,7 @@
     <!-- <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="meshes/stl/indy12_v2/link7.stl"/>
+        <mesh filename="meshes/indy12_v2/link7.stl"/>
       </geometry>
       <material name="metal_grey"/>
     </visual> -->
@@ -252,14 +252,14 @@
   <joint name="joint5" type="revolute">
     <parent link="link5"/>
     <child link="link6"/>
-    <origin rpy="0 0 0" xyz="0 -0.12900000 0.36250000"/>
+    <origin rpy="0 0 0" xyz="0 0.12900000 0.36250000"/>
     <axis xyz="0 1 0"/>
     <limit effort="10" lower="-3.0543261909900763" upper="3.0543261909900763" velocity="1"/>
   </joint>
   <joint name="joint6" type="revolute">
     <parent link="link6"/>
     <child link="link7"/>
-    <origin rpy="0 0 0" xyz="0 -0.07950000 +0.07455"/>
+    <origin rpy="0 0 0" xyz="0 0.07950000 +0.07455"/>
     <axis xyz="0 0 1"/>
     <limit effort="10" lower="-3.0543261909900763" upper="3.0543261909900763" velocity="1"/>
   </joint>

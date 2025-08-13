@@ -3,7 +3,7 @@
 using namespace std;
 int main()
 {
-    string ws_path = "/home/mtplnr/mpc_ws/urdf2modelcasadi";
+    string ws_path = "/home/robot/mpc_ws/urdf2modelcasadi";
   // Example with SFTMP URDF.
 
   // ---------------------------------------------------------------------
@@ -59,7 +59,8 @@ int main()
   casadi::Function J_s = robot_model.kinematic_jacobian("space", end_effector_name);
   casadi::Function J_b = robot_model.kinematic_jacobian("body", end_effector_name);
 
-
+  casadi::Function dJ_s = robot_model.jacobian_derivative("space", end_effector_name);
+  casadi::Function dJ_b = robot_model.jacobian_derivative("body", end_effector_name);
 
   // ---------------------------------------------------------------------
   // Generate (or save) a function
@@ -83,6 +84,8 @@ int main()
   mecali::generate_code(J_id, "KARM_EM_J_id", codegen_options);
   mecali::generate_code(J_s, "KARM_EM_J_s", codegen_options);
   mecali::generate_code(J_b, "KARM_EM_J_b", codegen_options);
+  mecali::generate_code(dJ_s, "KARM_EM_dJ_s", codegen_options);
+  mecali::generate_code(dJ_b, "KARM_EM_dJ_b", codegen_options);
 
   robot_model.generate_json("KARM_EM.json");
 
