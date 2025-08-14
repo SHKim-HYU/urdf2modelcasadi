@@ -3,13 +3,13 @@
 using namespace std;
 int main()
 {
-    string ws_path = "/home/mtplnr/mpc_ws/urdf2modelcasadi";
+    string ws_path = "/home/robot/mpc_ws/urdf2modelcasadi";
   // Example with SFTMP URDF.
 
   // ---------------------------------------------------------------------
   // Create a model based on a URDF file
   // ---------------------------------------------------------------------
-  std::string urdf_filename = ws_path+"/urdf2model/models/caesar/KARM_EQM.urdf";
+  std::string urdf_filename = ws_path+"/urdf2model/models/HYU/caesar/KARM_EQM.urdf";
   // Instantiate a Serial_Robot object called robot_model
   mecali::Serial_Robot robot_model;
   // Define (optinal) gravity vector to be used
@@ -23,6 +23,11 @@ int main()
   // q = [global_base_position, global_base_quaternion, joint_positions]
   // v = [local_base_velocity_linear, local_base_velocity_angular, joint_velocities]
   // See: https://github.com/stack-of-tasks/pinocchio/issues/1137
+
+  robot_model.rotorGearRatio << 160, 160, 160, 160, 160, 160, 160;
+  robot_model.rotorInertia << 1.24e-4, 1.24e-4, 1.24e-4, 1.24e-4, 1.24e-4, 1.24e-4, 1.24e-4;
+
+  robot_model.set_armature();
 
   // Print some information related to the imported model (boundaries, frames, DoF, etc)
   robot_model.print_model_data();
@@ -39,9 +44,9 @@ int main()
   casadi::Function C = robot_model.coriolis_matrix();
   casadi::Function G = robot_model.generalized_gravity();
   // // Set function for forward kinematics
-  std::vector<std::string> required_Frames = {"joint1", "joint2", "joint3", "joint4", "joint5", "joint6", "joint7", "eef_fixed"};
+  std::vector<std::string> required_Frames = {"joint1", "joint2", "joint3", "joint4", "joint5", "joint6", "joint7", "tcp_fixed"};
 
-  std::string end_effector_name = "eef_fixed";
+  std::string end_effector_name = "tcp_fixed";
 
   casadi::Function fkpos_ee = robot_model.forward_kinematics("position", end_effector_name);
   casadi::Function fkrot_ee = robot_model.forward_kinematics("rotation", end_effector_name);
@@ -78,6 +83,8 @@ int main()
   mecali::generate_code(J_id, "KARM_EQM_J_id", codegen_options);
   mecali::generate_code(J_s, "KARM_EQM_J_s", codegen_options);
   mecali::generate_code(J_b, "KARM_EQM_J_b", codegen_options);
+  mecali::generate_code(J_s, "KARM_EQM_dJ_s", codegen_options);
+  mecali::generate_code(J_b, "KARM_EQM_dJ_b", codegen_options);
 
   robot_model.generate_json("KARM_EQM.json");
 
