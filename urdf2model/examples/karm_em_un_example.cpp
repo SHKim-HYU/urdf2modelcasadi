@@ -3,13 +3,13 @@
 using namespace std;
 int main()
 {
-    string ws_path = "/home/robot/mpc_ws/urdf2modelcasadi";
+    string ws_path = "/home/mtplnr/mpc_ws/urdf2modelcasadi";
   // Example with SFTMP URDF.
 
   // ---------------------------------------------------------------------
   // Create a model based on a URDF file
   // ---------------------------------------------------------------------
-  std::string urdf_filename = ws_path+"/urdf2model/models/HYU/caesar/KARM_EM.urdf";
+  std::string urdf_filename = ws_path+"/urdf2model/models/HYU/caesar/KARM_EM_uncertainty.urdf";
   // Instantiate a Serial_Robot object called robot_model
   mecali::Serial_Robot robot_model;
   // Define (optinal) gravity vector to be used
@@ -25,7 +25,7 @@ int main()
   // See: https://github.com/stack-of-tasks/pinocchio/issues/1137
 
   robot_model.rotorGearRatio << 160, 160, 160, 160, 160, 160, 160;
-  robot_model.rotorInertia << 3.371e-4, 3.371e-4, 3.371e-4, 3.371e-4, 3.371e-4, 3.371e-4, 3.371e-4;
+  robot_model.rotorInertia << 3.871e-4, 2.871e-4, 3.871e-4, 2.871e-4, 3.871e-4, 2.871e-4, 3.871e-4;
 
   robot_model.set_armature();
 
@@ -59,8 +59,7 @@ int main()
   casadi::Function J_s = robot_model.kinematic_jacobian("space", end_effector_name);
   casadi::Function J_b = robot_model.kinematic_jacobian("body", end_effector_name);
 
-  casadi::Function dJ_s = robot_model.jacobian_derivative("space", end_effector_name);
-  casadi::Function dJ_b = robot_model.jacobian_derivative("body", end_effector_name);
+
 
   // ---------------------------------------------------------------------
   // Generate (or save) a function
@@ -84,8 +83,6 @@ int main()
   mecali::generate_code(J_id, "KARM_EM_J_id", codegen_options);
   mecali::generate_code(J_s, "KARM_EM_J_s", codegen_options);
   mecali::generate_code(J_b, "KARM_EM_J_b", codegen_options);
-  mecali::generate_code(dJ_s, "KARM_EM_dJ_s", codegen_options);
-  mecali::generate_code(dJ_b, "KARM_EM_dJ_b", codegen_options);
 
   robot_model.generate_json("KARM_EM.json");
 

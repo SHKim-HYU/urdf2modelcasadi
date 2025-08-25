@@ -193,11 +193,33 @@ target_link_libraries( kuka_kr250_example
                       pinocchio::pinocchio
                                         )
 
+## KUKA KR250 Rail example
+add_executable( kuka_kr250_rail_example
+               kuka_kr250_rail_example.cpp
+             )
+target_link_libraries( kuka_kr250_rail_example
+
+                      ${PROJECT_NAME}
+                      ${CASADI_LIB}
+                      pinocchio::pinocchio
+                                        )
+
 ## KUKA KR120 example
 add_executable( kuka_kr120_example
                kuka_kr120_example.cpp
              )
 target_link_libraries( kuka_kr120_example
+
+                      ${PROJECT_NAME}
+                      ${CASADI_LIB}
+                      pinocchio::pinocchio
+                                        )
+
+## KUKA KR120 SAT example
+add_executable( kuka_kr120_sat_example
+               kuka_kr120_sat_example.cpp
+             )
+target_link_libraries( kuka_kr120_sat_example
 
                       ${PROJECT_NAME}
                       ${CASADI_LIB}
@@ -652,7 +674,18 @@ target_link_libraries( indy12_v2_example
        ${CASADI_LIB}
        pinocchio::pinocchio
                          )
-                                               
+
+## indy12_v2_sat
+add_executable( indy12_v2_sat_example
+              indy12_v2_sat_example.cpp
+              )
+target_link_libraries( indy12_v2_sat_example
+
+       ${PROJECT_NAME}
+       ${CASADI_LIB}
+       pinocchio::pinocchio
+                         ) 
+
 ## HD-yl012
 add_executable( yl012_example
               yl012_example.cpp
