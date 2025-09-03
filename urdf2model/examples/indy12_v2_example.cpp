@@ -25,7 +25,7 @@ int main()
   // See: https://github.com/stack-of-tasks/pinocchio/issues/1137
 
   robot_model.rotorGearRatio << 121, 121, 121, 121, 121, 121, 121;
-  robot_model.rotorInertia << 1.24e-4, 1.24e-4, 1.24e-4, 1.24e-4, 1.24e-4, 1.24e-4, 1.24e-4;
+  robot_model.rotorInertia << 3.371e-4, 3.371e-4, 3.371e-4, 3.371e-4, 3.371e-4, 3.371e-4, 3.371e-4;
 
   robot_model.set_armature();
 
