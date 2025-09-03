@@ -24,8 +24,8 @@ int main()
   // v = [local_base_velocity_linear, local_base_velocity_angular, joint_velocities]
   // See: https://github.com/stack-of-tasks/pinocchio/issues/1137
 
-  robot_model.rotorGearRatio << 121, 121, 121, 121, 121, 121, 121;
-  robot_model.rotorInertia << 3.371e-4, 3.371e-4, 3.371e-4, 3.371e-4, 3.371e-4, 3.371e-4, 3.371e-4;
+  robot_model.rotorGearRatio << 0,0,0,0,0,0, 121, 121, 121, 121, 121, 121, 121;
+  robot_model.rotorInertia << 0,0,0,0,0,0, 3.371e-4, 3.371e-4, 3.371e-4, 3.371e-4, 3.371e-4, 3.371e-4, 3.371e-4;
 
   robot_model.set_armature();
 
@@ -37,6 +37,9 @@ int main()
   // ---------------------------------------------------------------------
   // Set function for forward dynamics
   casadi::Function fd = robot_model.forward_dynamics();
+  casadi::Function CoM_x = robot_model.center_of_mass();
+  casadi::Function J_com = robot_model.jacobian_center_of_mass();
+
   // // Set function for inverse dynamics
   casadi::Function id = robot_model.inverse_dynamics();
   casadi::Function M = robot_model.mass_matrix();
@@ -108,6 +111,8 @@ int main()
   codegen_options["c"] = true;
   codegen_options["save"] = true;
   mecali::generate_code(fd, "indy12_v2_sat_fd", codegen_options);
+  mecali::generate_code(CoM_x, "indy12_v2_sat_CoM_x", codegen_options);
+  mecali::generate_code(J_com, "indy12_v2_sat_J_com", codegen_options);
   mecali::generate_code(id, "indy12_v2_sat_id", codegen_options);
   mecali::generate_code(M, "indy12_v2_sat_M", codegen_options);
   mecali::generate_code(Minv, "indy12_v2_sat_Minv", codegen_options);

@@ -52,6 +52,8 @@ int main()
   casadi::Function J_s = robot_model.kinematic_jacobian("space", end_effector_name);
   casadi::Function J_b = robot_model.kinematic_jacobian("body", end_effector_name);
 
+  casadi::Function dJ_s = robot_model.jacobian_derivative("space", end_effector_name);
+  casadi::Function dJ_b = robot_model.jacobian_derivative("body", end_effector_name);
 
   // casadi::Function fk       = robot_model.forward_kinematics("transformation", required_Frames);
 
@@ -112,6 +114,8 @@ int main()
   mecali::generate_code(fk, "kuka_kr_250_rail_fk", codegen_options);
   mecali::generate_code(J_s, "kuka_kr_250_rail_J_s", codegen_options);
   mecali::generate_code(J_b, "kuka_kr_250_rail_J_b", codegen_options);
+  mecali::generate_code(J_s, "kuka_kr_250_rail_dJ_s", codegen_options);
+  mecali::generate_code(J_b, "kuka_kr_250_rail_dJ_b", codegen_options);
 
   robot_model.generate_json("kuka_kr_250_rail.json");
 
