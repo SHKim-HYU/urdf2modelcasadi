@@ -3,7 +3,7 @@
 using namespace std;
 int main()
 {
-    string ws_path = "/home/mtplnr/mpc_ws/urdf2modelcasadi";
+    string ws_path = "/home/robot/mpc_ws/urdf2modelcasadi";
   // Example with MMO-500 URDF.
 
   // ---------------------------------------------------------------------
@@ -114,8 +114,8 @@ int main()
   mecali::generate_code(fk, "kuka_kr_250_rail_fk", codegen_options);
   mecali::generate_code(J_s, "kuka_kr_250_rail_J_s", codegen_options);
   mecali::generate_code(J_b, "kuka_kr_250_rail_J_b", codegen_options);
-  mecali::generate_code(J_s, "kuka_kr_250_rail_dJ_s", codegen_options);
-  mecali::generate_code(J_b, "kuka_kr_250_rail_dJ_b", codegen_options);
+  mecali::generate_code(dJ_s, "kuka_kr_250_rail_dJ_s", codegen_options);
+  mecali::generate_code(dJ_b, "kuka_kr_250_rail_dJ_b", codegen_options);
 
   robot_model.generate_json("kuka_kr_250_rail.json");
 
