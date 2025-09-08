@@ -43,6 +43,7 @@ int main()
   std::vector<std::string> required_Frames = {"joint1", "joint2", "joint3", "joint4", "joint5", "joint6", "tcp_joint"};
 
   std::string end_effector_name = "tcp_joint";
+  
 
   casadi::Function fkpos_ee = robot_model.forward_kinematics("position", end_effector_name);
   casadi::Function fkrot_ee = robot_model.forward_kinematics("rotation", end_effector_name);

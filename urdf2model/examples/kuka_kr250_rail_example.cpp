@@ -43,10 +43,12 @@ int main()
   std::vector<std::string> required_Frames = {"jointE", "joint1", "joint2", "joint3", "joint4", "joint5", "joint6", "tcp_joint"};
 
   std::string end_effector_name = "tcp_joint";
+  std::string base_name = "jointE";
 
   casadi::Function fkpos_ee = robot_model.forward_kinematics("position", end_effector_name);
   casadi::Function fkrot_ee = robot_model.forward_kinematics("rotation", end_effector_name);
   casadi::Function fk_ee = robot_model.forward_kinematics("transformation", end_effector_name);
+  casadi::Function fk_base = robot_model.forward_kinematics("transformation", base_name);
   casadi::Function fk = robot_model.forward_kinematics("transformation",required_Frames);
 
   casadi::Function J_s = robot_model.kinematic_jacobian("space", end_effector_name);
@@ -111,6 +113,7 @@ int main()
   //mecali::generate_code(fk_ee_pos, "mmo500_ppr_fk_ee_pos", codegen_options);
    mecali::generate_code(fkrot_ee, "kuka_kr_250_rail_fkrot_ee", codegen_options);
   mecali::generate_code(fk_ee, "kuka_kr_250_rail_fk_ee", codegen_options);
+  mecali::generate_code(fk_base, "kuka_kr_250_sat_fk_base", codegen_options);
   mecali::generate_code(fk, "kuka_kr_250_rail_fk", codegen_options);
   mecali::generate_code(J_s, "kuka_kr_250_rail_J_s", codegen_options);
   mecali::generate_code(J_b, "kuka_kr_250_rail_J_b", codegen_options);
