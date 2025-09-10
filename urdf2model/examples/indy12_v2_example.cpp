@@ -3,7 +3,7 @@
 using namespace std;
 int main()
 {
-    string ws_path = "/home/robot/mpc_ws/urdf2modelcasadi";
+    string ws_path = "/home/mtplnr/mpc_ws/urdf2modelcasadi";
   // Example with MMO-500 URDF.
 
   // ---------------------------------------------------------------------
@@ -13,7 +13,7 @@ int main()
   // Instantiate a Serial_Robot object called robot_model
   mecali::Serial_Robot robot_model;
   // Define (optinal) gravity vector to be used
-  Eigen::Vector3d gravity_vector(0, -9.81, 0);
+  Eigen::Vector3d gravity_vector(0, 0, 0);
   // Eigen::Vector3d gravity_vector(0, 0, 0);
   // Create the model based on a URDF file
   robot_model.import_model(urdf_filename, gravity_vector);

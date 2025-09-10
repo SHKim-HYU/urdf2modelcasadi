@@ -9,7 +9,7 @@ int main()
   // ---------------------------------------------------------------------
   // Create a model based on a URDF file
   // ---------------------------------------------------------------------
-  std::string urdf_filename = ws_path+"/urdf2model/models/HYU/caesar/KARM_EQM.urdf";
+  std::string urdf_filename = ws_path+"/urdf2model/models/HYU/caesar/KARM_EQM_CI.urdf";
   // Instantiate a Serial_Robot object called robot_model
   mecali::Serial_Robot robot_model;
   // Define (optinal) gravity vector to be used
@@ -60,7 +60,6 @@ int main()
   casadi::Function dJ_b = robot_model.jacobian_derivative("body", end_effector_name);
 
 
-
   // ---------------------------------------------------------------------
   // Generate (or save) a function
   // ---------------------------------------------------------------------
@@ -69,22 +68,22 @@ int main()
   mecali::Dictionary codegen_options;
   codegen_options["c"] = true;
   codegen_options["save"] = true;
-  mecali::generate_code(fd, "KARM_EQM_fd", codegen_options);
-  mecali::generate_code(id, "KARM_EQM_id", codegen_options);
-  mecali::generate_code(M, "KARM_EQM_M", codegen_options);
-  mecali::generate_code(Minv, "KARM_EQM_Minv", codegen_options);
-  mecali::generate_code(C, "KARM_EQM_C", codegen_options);
-  mecali::generate_code(G, "KARM_EQM_G", codegen_options);
+  mecali::generate_code(fd, "KARM_EQM_CI_fd", codegen_options);
+  mecali::generate_code(id, "KARM_EQM_CI_id", codegen_options);
+  mecali::generate_code(M, "KARM_EQM_CI_M", codegen_options);
+  mecali::generate_code(Minv, "KARM_EQM_CI_Minv", codegen_options);
+  mecali::generate_code(C, "KARM_EQM_CI_C", codegen_options);
+  mecali::generate_code(G, "KARM_EQM_CI_G", codegen_options);
 
-  mecali::generate_code(fkrot_ee, "KARM_EQM_fkrot_ee", codegen_options);
-  mecali::generate_code(fk_ee, "KARM_EQM_fk_ee", codegen_options);
-  mecali::generate_code(fk, "KARM_EQM_fk", codegen_options);
-  mecali::generate_code(J_s, "KARM_EQM_J_s", codegen_options);
-  mecali::generate_code(J_b, "KARM_EQM_J_b", codegen_options);
-  mecali::generate_code(dJ_s, "KARM_EQM_dJ_s", codegen_options);
-  mecali::generate_code(dJ_b, "KARM_EQM_dJ_b", codegen_options);
+  mecali::generate_code(fkrot_ee, "KARM_EQM_CI_fkrot_ee", codegen_options);
+  mecali::generate_code(fk_ee, "KARM_EQM_CI_fk_ee", codegen_options);
+  mecali::generate_code(fk, "KARM_EQM_CI_fk", codegen_options);
+  mecali::generate_code(J_s, "KARM_EQM_CI_J_s", codegen_options);
+  mecali::generate_code(J_b, "KARM_EQM_CI_J_b", codegen_options);
+  mecali::generate_code(dJ_s, "KARM_EQM_CI_dJ_s", codegen_options);
+  mecali::generate_code(dJ_b, "KARM_EQM_CI_dJ_b", codegen_options);
 
-  robot_model.generate_json("KARM_EQM.json");
+  robot_model.generate_json("KARM_EQM_CI.json");
 
   // std::cout << fd << std::endl;
 }

@@ -74,6 +74,17 @@ target_link_libraries( karm_eqm_example
        pinocchio::pinocchio
                          )
 
+## KARM_EQM_CI example
+add_executable( karm_eqm_ci_example
+              karm_eqm_ci_example.cpp
+              )
+target_link_libraries( karm_eqm_ci_example
+
+       ${PROJECT_NAME}
+       ${CASADI_LIB}
+       pinocchio::pinocchio
+                         )
+
 ## Caesar example
 add_executable( caesar_example
               caesar_example.cpp
