@@ -266,12 +266,6 @@
     </inertial>
   </link>
   <link name="tool_plange">
-      <origin rpy="0 0 0" xyz="-0.00191829, -0.00711865, 0.0632705"/>
- <inertial>
-        <origin xyz="-0.00191829, -0.00711865, 0.0632705"  rpy="0 0 0" />        
-        <mass value="2.6"/>
-        <inertia  ixx="0.00716708"      ixy="0.000227877"      ixz="-0.000273462"      iyy="0.00704539"      iyz="0.000290156"      izz=" 0.00665249" />
-     </inertial>
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
