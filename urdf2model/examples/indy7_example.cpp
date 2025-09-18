@@ -3,13 +3,13 @@
 using namespace std;
 int main()
 {
-    string ws_path = "/home/mtplnr/mpc_ws/urdf2modelcasadi";
+    string ws_path = "/home/robot/mpc_ws/urdf2modelcasadi";
   // Example with MMO-500 URDF.
 
   // ---------------------------------------------------------------------
   // Create a model based on a URDF file
   // ---------------------------------------------------------------------
-  std::string urdf_filename = ws_path+"/urdf2model/models/indy7/indy7.urdf";
+  std::string urdf_filename = ws_path+"/urdf2model/models/NRMK/indy7/indy7.urdf";
   // Instantiate a Serial_Robot object called robot_model
   mecali::Serial_Robot robot_model;
   // Define (optinal) gravity vector to be used
@@ -33,6 +33,7 @@ int main()
   // Set function for forward dynamics
   casadi::Function fd = robot_model.forward_dynamics();
   casadi::Function CoM_x = robot_model.center_of_mass();
+  casadi::Function J_com = robot_model.jacobian_center_of_mass();
   // // Set function for inverse dynamics
   casadi::Function id = robot_model.inverse_dynamics();
   casadi::Function M = robot_model.mass_matrix();
@@ -108,6 +109,7 @@ int main()
   codegen_options["save"] = true;
   mecali::generate_code(fd, "indy7_fd", codegen_options);
   mecali::generate_code(CoM_x, "indy7_CoM_x", codegen_options);
+  mecali::generate_code(J_com, "indy7_J_com", codegen_options);
   mecali::generate_code(id, "indy7_id", codegen_options);
   mecali::generate_code(M, "indy7_M", codegen_options);
   mecali::generate_code(Minv, "indy7_Minv", codegen_options);
