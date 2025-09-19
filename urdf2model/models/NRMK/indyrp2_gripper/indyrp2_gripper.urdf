@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<robot name="indyrp2_gripper">
+  <link name="link0">
+    <inertial>
+      <origin xyz="0.00131966 -2.18E-06 0.03212832" rpy="0 0 0" />
+      <mass value="1.6703078" />
+      <inertia ixx="0.00661309" ixy="1.83E-06" ixz="2.695E-05" iyy="0.00644765" iyz="-2.7E-07" izz="0.0079209" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://indy-rp2/meshes/link0.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://indy-rp2/meshes/link0.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="link1">
+    <inertial>
+      <origin xyz="-0.00023749 -0.04310313 0.13245396" rpy="0 0 0" />
+      <mass value="11.44444535" />
+      <inertia ixx="0.35065005" ixy="0.00011931" ixz="-0.00037553" iyy="0.304798" iyz="-0.10984447" izz="0.06003147" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://indy-rp2/meshes/link1.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://indy-rp2/meshes/link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="link2">
+    <inertial>
+      <origin xyz="-0.21209188 -1.715E-05 0.07901191" rpy="0 0 0" />
+      <mass value="4.43308185" />
+      <inertia ixx="0.03742681" ixy="3.176E-05" ixz="-0.07906734" iyy="0.32119654" iyz="-8.08E-06" izz="0.29396155" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://indy-rp2/meshes/link2.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://indy-rp2/meshes/link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="link3">
+    <inertial>
+      <origin xyz="3.637E-05 0.07143055 0.0774605" rpy="0 0 0" />
+      <mass value="2.87045928" />
+      <inertia ixx="0.0409816" ixy="7.47E-06" ixz="9.16e-06" iyy="0.02106773" iyz="0.01817157" izz="0.02277477" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://indy-rp2/meshes/link3.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://indy-rp2/meshes/link3.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="link4">
+    <inertial>
+      <origin xyz="-0.16804016 0.00021421 -0.07000383" rpy="0 0 0" />
+      <mass value="2.68206064" />
+      <inertia ixx="0.0161721" ixy="-0.00011817" ixz="0.03341882" iyy="0.11364055" iyz="-4.371E-05" izz="0.10022522" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://indy-rp2/meshes/link4.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://indy-rp2/meshes/link4.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="link5">
+    <inertial>
+      <origin xyz="-0.00026847 -0.0709844 0.07649128" rpy="0 0 0" />
+      <mass value="2.12987371" />
+      <inertia ixx="0.02798891" ixy="3.893E-05" ixz="-4.768E-05" iyy="0.01443076" iyz="-0.01266296" izz="0.01496211" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://indy-rp2/meshes/link5.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://indy-rp2/meshes/link5.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="link6">
+    <inertial>
+      <origin xyz="-0.09796232 -0.00023114 0.06445892" rpy="0 0 0" />
+      <mass value="2.22412271" />
+      <inertia ixx="0.01105297" ixy="5.517E-05" ixz="-0.01481977" iyy="0.03698291" iyz="-3.74E-05" izz="0.02754795" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://indy-rp2/meshes/link6.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://indy-rp2/meshes/link6.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="link7">
+    <inertial>
+      <origin xyz="8.147E-05 -0.00046556 0.030791" rpy="0 0 0" />
+      <mass value="0.38255" />
+      <inertia ixx="0.00078982" ixy="-3.4E-07" ixz="8.3E-07" iyy="0.00079764" iyz="-5.08E-06" izz="0.00058319" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://indy-rp2/meshes/link7.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://indy-rp2/meshes/link7.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="tcp">
+    <inertial>
+      <origin xyz="-0.00030157 -3.778E-05 0.11722788" rpy="0 0 0" />
+      <mass value="7.445" />
+      <inertia ixx="0.16815633" ixy="-0.00099135" ixz="-3.064E-05" iyy="0.16592921" iyz="-8.504E-05" izz="0.02440488" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://indy-rp2/meshes/tcp.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://indy-rp2/meshes/tcp.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+<!-- joints -->
+  <joint name="joint0" type="revolute">
+    <origin xyz="0 0 0.0772" rpy="0 0 0" />
+    <parent link="link0" />
+    <child link="link1" />
+    <axis xyz="0 0 1" />
+    <limit
+      lower="-3.0543261909900767"
+      upper="3.0543261909900767"
+      effort="431.97"
+      velocity="2.6179938779914944" />
+  </joint>
+
+  <joint name="joint1" type="revolute">
+    <origin xyz="0 -0.1093 0.2228" rpy="1.570796327 1.570796327 0" />
+    <parent link="link1" />
+    <child link="link2" />
+    <axis xyz="0 0 1" />
+    <limit
+      lower="-3.0543261909900767"
+      upper="3.0543261909900767"
+      effort="431.97"
+      velocity="2.6179938779914944" />
+  </joint>
+
+  <joint name="joint2" type="revolute">
+    <origin xyz="-0.384 0 0.0847" rpy="-1.570796327 0 1.570796327" />
+    <parent link="link2" />
+    <child link="link3" />
+    <axis xyz="0 0 1" />
+    <limit
+      lower="-3.0543261909900767"
+      upper="3.0543261909900767"
+      effort="197.23"
+      velocity="2.6179938779914944" />
+  </joint>
+
+  <joint name="joint3" type="revolute">
+    <origin xyz="0 0.1153 0.0655" rpy="1.570796327 1.570796327 0" />
+    <parent link="link3" />
+    <child link="link4" />
+    <axis xyz="0 0 1" />
+    <limit
+      lower="-3.0543261909900767"
+      upper="3.0543261909900767"
+      effort="197.23"
+      velocity="2.6179938779914944" />
+  </joint>
+
+  <joint name="joint4" type="revolute">
+    <origin xyz="-0.2665 0 -0.0747" rpy="-1.570796327 0 1.570796327" />
+    <parent link="link4" />
+    <child link="link5" />
+    <axis xyz="0 0 1" />
+    <limit
+      lower="-3.0543261909900767"
+      upper="3.0543261909900767"
+      effort="79.79"
+      velocity="3.141592653589793" />
+  </joint>
+
+  <joint name="joint5" type="revolute">
+    <origin xyz="0 -0.1143 0.0835" rpy="1.570796327 1.570796327 0" />
+    <parent link="link5" />
+    <child link="link6" />
+    <axis xyz="0 0 1" />
+    <limit
+      lower="-3.0543261909900767"
+      upper="3.0543261909900767"
+      effort="79.79"
+      velocity="3.141592653589793" />
+  </joint>
+
+  <joint name="joint6" type="revolute">
+    <origin xyz="-0.168 0 0.0687" rpy="-1.570796327 0 1.570796327" />
+    <parent link="link6" />
+    <child link="link7" />
+    <axis xyz="0 0 1" />
+    <limit
+      lower="-3.0543261909900767"
+      upper="3.0543261909900767"
+      effort="79.79"
+      velocity="3.141592653589793" />
+  </joint>
+
+  <joint name="indyrp2_tcp" type="fixed">
+    <origin xyz="0 0 0.06" rpy="0 0 0" />
+    <parent link="link7" />
+    <child link="tcp" />
+    <axis xyz="0 0 0" />
+  </joint>
+
+</robot>

@@ -3,7 +3,7 @@
 using namespace std;
 int main()
 {
-    string ws_path = "/home/mtplnr/mpc_ws/urdf2modelcasadi";
+    string ws_path = "/home/robot/mpc_ws/urdf2modelcasadi";
   // Example with SFTMP URDF.
 
   // ---------------------------------------------------------------------
@@ -37,6 +37,8 @@ int main()
   // ---------------------------------------------------------------------
   // Set function for forward dynamics
   casadi::Function fd = robot_model.forward_dynamics();
+  casadi::Function CoM_x = robot_model.center_of_mass();
+  casadi::Function J_com = robot_model.jacobian_center_of_mass();
   // // Set function for inverse dynamics
   casadi::Function id = robot_model.inverse_dynamics();
   casadi::Function M = robot_model.mass_matrix();
@@ -69,6 +71,8 @@ int main()
   codegen_options["c"] = true;
   codegen_options["save"] = true;
   mecali::generate_code(fd, "KARM_EQM_CI_fd", codegen_options);
+  mecali::generate_code(CoM_x, "KARM_EQM_CI_CoM_x", codegen_options);
+  mecali::generate_code(J_com, "KARM_EQM_CI_J_com", codegen_options);
   mecali::generate_code(id, "KARM_EQM_CI_id", codegen_options);
   mecali::generate_code(M, "KARM_EQM_CI_M", codegen_options);
   mecali::generate_code(Minv, "KARM_EQM_CI_Minv", codegen_options);
