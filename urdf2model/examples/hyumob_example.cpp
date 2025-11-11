@@ -3,13 +3,13 @@
 using namespace std;
 int main()
 {
-    string ws_path = "/home/mtplnr/mpc_ws/urdf2modelcasadi";
+    string ws_path = "/home/robot/mpc_ws/urdf2modelcasadi";
   // Example with MMO-500 URDF.
 
   // ---------------------------------------------------------------------
   // Create a model based on a URDF file
   // ---------------------------------------------------------------------
-  std::string urdf_filename = ws_path+"/urdf2model/models/HYUMM/hyumob.urdf";
+  std::string urdf_filename = ws_path+"/urdf2model/models/HYU/HYUMM/hyumob.urdf";
   // Instantiate a Serial_Robot object called robot_model
   mecali::Serial_Robot robot_model;
   // Define (optinal) gravity vector to be used
@@ -48,6 +48,9 @@ int main()
 
   casadi::Function J_s = robot_model.kinematic_jacobian("space", base_name);
   casadi::Function J_b = robot_model.kinematic_jacobian("body", base_name);
+
+  casadi::Function dJ_s = robot_model.jacobian_derivative("space", base_name);
+  casadi::Function dJ_b = robot_model.jacobian_derivative("body", base_name);
 
   // casadi::Function fk       = robot_model.forward_kinematics("transformation", required_Frames);
 
@@ -105,6 +108,8 @@ int main()
   mecali::generate_code(fk, "hyumob_fk", codegen_options);
   mecali::generate_code(J_s, "hyumob_J_s", codegen_options);
   mecali::generate_code(J_b, "hyumob_J_b", codegen_options);
+  mecali::generate_code(dJ_s, "hyumob_dJ_s", codegen_options);
+  mecali::generate_code(dJ_b, "hyumob_dJ_b", codegen_options);
 
   robot_model.generate_json("hyumob.json");
 

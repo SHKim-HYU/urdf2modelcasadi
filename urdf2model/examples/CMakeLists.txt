@@ -401,6 +401,16 @@ target_link_libraries( hyumm_example
        pinocchio::pinocchio
                          )
 
+## HYU Mobile Manipulator
+add_executable( hyumm_scan_example
+              hyumm_scan_example.cpp
+              )
+target_link_libraries( hyumm_scan_example
+
+       ${PROJECT_NAME}
+       ${CASADI_LIB}
+       pinocchio::pinocchio
+                         )
 
 ## HYU Mobile Manipulator floating
 add_executable( hyumm_floating_example

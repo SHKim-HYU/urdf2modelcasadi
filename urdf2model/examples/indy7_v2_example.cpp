@@ -3,7 +3,7 @@
 using namespace std;
 int main()
 {
-    string ws_path = "/home/mtplnr/mpc_ws/urdf2modelcasadi";
+    string ws_path = "/home/robot/mpc_ws/urdf2modelcasadi";
   // Example with MMO-500 URDF.
 
   // ---------------------------------------------------------------------
@@ -23,6 +23,11 @@ int main()
   // q = [global_base_position, global_base_quaternion, joint_positions]
   // v = [local_base_velocity_linear, local_base_velocity_angular, joint_velocities]
   // See: https://github.com/stack-of-tasks/pinocchio/issues/1137
+
+  robot_model.rotorGearRatio << 121, 121, 121, 101, 101, 101;
+  robot_model.rotorInertia << 1.39e-4, 1.39e-4, 2.94e-5, 1.82e-5, 1.82e-5, 1.82e-5;
+
+  robot_model.set_armature();
 
   // Print some information related to the imported model (boundaries, frames, DoF, etc)
   robot_model.print_model_data();

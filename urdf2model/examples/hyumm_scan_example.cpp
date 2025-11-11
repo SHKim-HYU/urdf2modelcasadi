@@ -9,7 +9,7 @@ int main()
   // ---------------------------------------------------------------------
   // Create a model based on a URDF file
   // ---------------------------------------------------------------------
-  std::string urdf_filename = ws_path+"/urdf2model/models/NRMK/indy12_v2/indy12_v2.urdf";
+  std::string urdf_filename = ws_path+"/urdf2model/models/HYU/HYUMM/hyumm_scan.urdf";
   // Instantiate a Serial_Robot object called robot_model
   mecali::Serial_Robot robot_model;
   // Define (optinal) gravity vector to be used
@@ -18,16 +18,11 @@ int main()
   // Create the model based on a URDF file
   robot_model.import_model(urdf_filename, gravity_vector);
   // robot_model.import_floating_base_model(urdf_filename, gravity_vector, true, true);
-  //robot_model.import_planar_base_model(urdf_filename, gravity_vector, true, true);
+  // robot_model.import_planar_base_model(urdf_filename, gravity_vector, true, false);
   // For a floating base robot:
   // q = [global_base_position, global_base_quaternion, joint_positions]
   // v = [local_base_velocity_linear, local_base_velocity_angular, joint_velocities]
   // See: https://github.com/stack-of-tasks/pinocchio/issues/1137
-
-  robot_model.rotorGearRatio << 121, 121, 121, 121, 121, 121, 121;
-  robot_model.rotorInertia << 7.17e-4, 7.17e-4, 1.39e-4, 1.39e-4, 2.94e-5, 2.94e-5, 2.94e-5;
-
-  robot_model.set_armature();
 
   // Print some information related to the imported model (boundaries, frames, DoF, etc)
   robot_model.print_model_data();
@@ -48,14 +43,19 @@ int main()
   casadi::Function G = robot_model.generalized_gravity();
   
   // // Set function for forward kinematics
-  std::vector<std::string> required_Frames = {"joint0", "joint1", "joint2", "joint3", "joint4", "joint5", "joint6","RFT_fixed", "tcp_fixed"};
+  std::vector<std::string> required_Frames = {"base_link", "joint0", "joint1", "joint2", "joint3", "joint4", "joint5", "tcp"};
 
-  std::string end_effector_name = "tcp_fixed";
+  std::string base_name = "base_link";
+  std::string end_effector_name = "tcp";
 
   casadi::Function fkpos_ee = robot_model.forward_kinematics("position", end_effector_name);
   casadi::Function fkrot_ee = robot_model.forward_kinematics("rotation", end_effector_name);
   casadi::Function fk_ee = robot_model.forward_kinematics("transformation", end_effector_name);
+  casadi::Function fk_base = robot_model.forward_kinematics("transformation", base_name);
   casadi::Function fk = robot_model.forward_kinematics("transformation",required_Frames);
+
+  casadi::Function J_fd = robot_model.forward_dynamics_derivatives("jacobian");
+  casadi::Function J_id = robot_model.inverse_dynamics_derivatives("jacobian");
 
   casadi::Function J_s = robot_model.kinematic_jacobian("space", end_effector_name);
   casadi::Function J_b = robot_model.kinematic_jacobian("body", end_effector_name);
@@ -110,23 +110,27 @@ int main()
   mecali::Dictionary codegen_options;
   codegen_options["c"] = true;
   codegen_options["save"] = true;
-  mecali::generate_code(fd, "indy12_v2_fd", codegen_options);
-  mecali::generate_code(CoM_x, "indy12_v2_CoM_x", codegen_options);
-  mecali::generate_code(J_com, "indy12_v2_J_com", codegen_options);
-  mecali::generate_code(id, "indy12_v2_id", codegen_options);
-  mecali::generate_code(M, "indy12_v2_M", codegen_options);
-  mecali::generate_code(Minv, "indy12_v2_Minv", codegen_options);
-  mecali::generate_code(C, "indy12_v2_C", codegen_options);
-  mecali::generate_code(G, "indy12_v2_G", codegen_options);
-   mecali::generate_code(fkrot_ee, "indy12_v2_fkrot_ee", codegen_options);
-  mecali::generate_code(fk_ee, "indy12_v2_fk_ee", codegen_options);
-  mecali::generate_code(fk, "indy12_v2_fk", codegen_options);
-  mecali::generate_code(J_s, "indy12_v2_J_s", codegen_options);
-  mecali::generate_code(J_b, "indy12_v2_J_b", codegen_options);
-  mecali::generate_code(dJ_s, "indy12_v2_dJ_s", codegen_options);
-  mecali::generate_code(dJ_b, "indy12_v2_dJ_b", codegen_options);
+  mecali::generate_code(fd, "hyumm_scan_fd", codegen_options);
+  mecali::generate_code(CoM_x, "hyumm_scan_CoM_x", codegen_options);
+  mecali::generate_code(J_com, "hyumm_scan_J_com", codegen_options);
+  mecali::generate_code(id, "hyumm_scan_id", codegen_options);
+  mecali::generate_code(M, "hyumm_scan_M", codegen_options);
+  mecali::generate_code(Minv, "hyumm_scan_Minv", codegen_options);
+  mecali::generate_code(C, "hyumm_scan_C", codegen_options);
+  mecali::generate_code(G, "hyumm_scan_G", codegen_options);
+  //mecali::generate_code(fk_ee_pos, "mmo500_ppr_fk_ee_pos", codegen_options);
+  mecali::generate_code(fkrot_ee, "hyumm_scan_fkrot_ee", codegen_options);
+  mecali::generate_code(fk_ee, "hyumm_scan_fk_ee", codegen_options);
+  mecali::generate_code(fk_base, "hyumm_scan_fk_base", codegen_options);
+  mecali::generate_code(fk, "hyumm_scan_fk", codegen_options);
+  mecali::generate_code(J_fd, "hyumm_scan_J_fd", codegen_options);
+  mecali::generate_code(J_id, "hyumm_scan_J_id", codegen_options);
+  mecali::generate_code(J_s, "hyumm_scan_J_s", codegen_options);
+  mecali::generate_code(J_b, "hyumm_scan_J_b", codegen_options);
+  mecali::generate_code(dJ_s, "hyumm_scan_dJ_s", codegen_options);
+  mecali::generate_code(dJ_b, "hyumm_scan_dJ_b", codegen_options);
 
-  robot_model.generate_json("indy12_v2.json");
+  robot_model.generate_json("hyumm_scan.json");
 
   // std::cout << fd << std::endl;
 }
