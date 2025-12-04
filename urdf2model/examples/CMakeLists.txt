@@ -63,6 +63,17 @@ target_link_libraries( karm_em_example
        pinocchio::pinocchio
                          )
 
+## KARM_EM_v2 example
+add_executable( karm_em_v2_example
+              karm_em_v2_example.cpp
+              )
+target_link_libraries( karm_em_v2_example
+
+       ${PROJECT_NAME}
+       ${CASADI_LIB}
+       pinocchio::pinocchio
+                         )
+
 ## KARM_EQM example
 add_executable( karm_eqm_example
               karm_eqm_example.cpp
