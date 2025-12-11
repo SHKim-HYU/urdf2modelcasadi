@@ -9,7 +9,7 @@ int main()
   // ---------------------------------------------------------------------
   // Create a model based on a URDF file
   // ---------------------------------------------------------------------
-  std::string urdf_filename = ws_path+"/urdf2model/models/indy7/indy7_v2.urdf";
+  std::string urdf_filename = ws_path+"/urdf2model/models/NRMK/indy7/indy7_v2.urdf";
   // Instantiate a Serial_Robot object called robot_model
   mecali::Serial_Robot robot_model;
   // Define (optinal) gravity vector to be used
