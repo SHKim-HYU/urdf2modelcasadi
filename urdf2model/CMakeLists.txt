@@ -1,7 +1,7 @@
-  CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+  CMAKE_MINIMUM_REQUIRED(VERSION 3.5)
 
-# Set project name
-  project(mecali)
+# Set project name and version
+  project(mecali VERSION 1.0.0)
 
 # set LINK command
   IF(WIN32)
@@ -34,9 +34,13 @@
 
 
 # for linking directories (as the -L flag in gcc)
-  find_library(CASADI_LIB casadi HINTS $ENV{CASADI_INSTALL_LIB})
-  include_directories($ENV{CASADI_INSTALL_INCLUDE})
-  
+  find_package(PkgConfig REQUIRED)
+  set(ENV{PKG_CONFIG_PATH} "$ENV{PKG_CONFIG_PATH}:/opt/casadi/lib/pkgconfig")
+  pkg_check_modules(CASADI REQUIRED casadi)
+  include_directories(${CASADI_INCLUDE_DIRS})
+  link_directories(${CASADI_LIBRARY_DIRS})
+  set(CASADI_LIB ${CASADI_LIBRARIES})
+
   find_package(pinocchio REQUIRED)
   # link_directories( ${PINOCCHIO_LIBRARY_DIRS} )
 
@@ -96,3 +100,9 @@
   # if(BUILD_BENCHMARKS)
   #   add_subdirectory (benchmarks)
   # endif(BUILD_BENCHMARKS)
+
+# ----------------------------------------------------
+# --- PKG-CONFIG -------------------------------------
+# ----------------------------------------------------
+  configure_file(${CMAKE_SOURCE_DIR}/mecali.pc.in ${CMAKE_BINARY_DIR}/mecali.pc @ONLY)
+  install(FILES ${CMAKE_BINARY_DIR}/mecali.pc DESTINATION lib/pkgconfig)

@@ -1,0 +1,12 @@
+prefix=@CMAKE_INSTALL_PREFIX@
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: mecali
+Description: Robot dynamics and kinematics library based on Pinocchio and CasADi
+URL: https://github.com/urdf2modelcasadi
+Version: @PROJECT_VERSION@
+Requires: casadi pinocchio
+Libs: -L${libdir} -lmecali
+Cflags: -I${includedir}

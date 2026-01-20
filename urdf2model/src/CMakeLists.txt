@@ -7,14 +7,14 @@ LIST(APPEND ${PROJECT_NAME}_SOURCES
     ${SRC_DIR}/functions/forward_dynamics.cpp
     ${SRC_DIR}/functions/inverse_dynamics.cpp
     ${SRC_DIR}/functions/forward_kinematics.cpp
-    ${SRC_DIR}/functions/code_generation.cpp
     ${SRC_DIR}/functions/robot_expressions.cpp
+    ${SRC_DIR}/utils/code_generation.cpp
+    ${SRC_DIR}/utils/model_deployer.cpp
     )
 
 # include directories (as the -I flag in gcc)
 include_directories(${PINOCCHIO_INC})
-include_directories(${EIGEN_INC})
-include_directories(${CASADI_DIR}/install_folder/include)
+include_directories(/usr/include/eigen3)
 
 # link external libraries (as the -l flag in gcc)
 ADD_LIBRARY(${PROJECT_NAME} SHARED ${HEADERS} ${${PROJECT_NAME}_SOURCES})
@@ -24,6 +24,7 @@ target_link_libraries(${PROJECT_NAME}
 
                       stdc++
                       boost_system
+                      boost_filesystem
                       urdfdom_model
                       ${CASADI_LIB}
                     )

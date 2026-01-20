@@ -16,9 +16,10 @@
 #include "functions/forward_dynamics.hpp"
 #include "functions/inverse_dynamics.hpp"
 #include "functions/forward_kinematics.hpp"
-#include "functions/code_generation.hpp"
 #include "functions/common.hpp"
 #include "functions/robot_expressions.hpp"
+#include "utils/code_generation.hpp"
+#include "utils/model_deployer.hpp"
 
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/json_parser.hpp>
@@ -26,6 +27,7 @@
 #include <iostream>
 #include <sstream>
 #include <cstdlib>
+#include <set>
 
 /*
 TODO Check how to include code_generation as a public method in class Serial_Robot: follow the save example https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp
@@ -87,6 +89,8 @@ namespace mecali
     void set_armature();
 
     void generate_json(std::string filename);
+    void generate_json(std::string filename, const std::string& base_path, const std::string& urdf_path, const std::string& model_prefix);
+    void generate_json(std::string filename, const std::string& base_path, const std::string& library_path, const std::string& urdf_path, const std::string& model_prefix, const std::set<std::string>& generated_functions);
 
     // random configuration methods
     Eigen::VectorXd randomConfiguration();

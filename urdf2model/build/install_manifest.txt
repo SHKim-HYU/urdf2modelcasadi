@@ -1,0 +1,10 @@
+/usr/local/include/mecali/functions/common.hpp
+/usr/local/include/mecali/functions/forward_dynamics.hpp
+/usr/local/include/mecali/functions/forward_kinematics.hpp
+/usr/local/include/mecali/functions/inverse_dynamics.hpp
+/usr/local/include/mecali/functions/robot_expressions.hpp
+/usr/local/include/mecali/model_interface.hpp
+/usr/local/include/mecali/utils/code_generation.hpp
+/usr/local/include/mecali/utils/debug_functions.hpp
+/usr/local/include/mecali/utils/model_deployer.hpp
+/usr/local/lib/libmecali.so

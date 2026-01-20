@@ -1,0 +1,11 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/test_abi_chaser_example.dir/test_abi_chaser_example.cpp.o"
+  "CMakeFiles/test_abi_chaser_example.dir/test_abi_chaser_example.cpp.o.d"
+  "test_abi_chaser_example"
+  "test_abi_chaser_example.pdb"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/test_abi_chaser_example.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

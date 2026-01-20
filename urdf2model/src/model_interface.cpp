@@ -414,6 +414,147 @@ namespace mecali
     outFile << ss.rdbuf();
   }
 
+  void Serial_Robot::generate_json(std::string filename, const std::string& base_path, const std::string& urdf_path, const std::string& model_prefix)
+  {
+    // base_path: e.g., "/opt/Robot_Foundation/models/robot/HDRobotics/yl012"
+    // model_prefix: e.g., "yl012" (used for file naming)
+    std::string casadi_path = base_path + "/codegen/casadi/";
+
+    boost::property_tree::ptree pt;
+    pt.put("name", this->name);
+    pt.put("model_prefix", model_prefix);
+    pt.put("n_dof", this->n_dof);
+    pt.put("n_joints", this->n_joints);
+    pt.put("n_q", this->n_q);
+    pt.put("n_frames", this->n_frames);
+    pt.put("gravity.x", this->gravity[0]);
+    pt.put("gravity.y", this->gravity[1]);
+    pt.put("gravity.z", this->gravity[2]);
+
+    // URDF path (absolute)
+    pt.put("urdf_path", urdf_path);
+
+    // CasADi function paths (absolute) - using model_prefix for consistency
+    pt.put("forward_kinematics_path", casadi_path + model_prefix + "_fk.casadi");
+    pt.put("forward_kinematics_ee_path", casadi_path + model_prefix + "_fk_ee.casadi");
+    pt.put("forward_kinematics_rot_ee_path", casadi_path + model_prefix + "_fkrot_ee.casadi");
+    pt.put("forward_dynamics_path", casadi_path + model_prefix + "_fd.casadi");
+    pt.put("inverse_dynamics_path", casadi_path + model_prefix + "_id.casadi");
+
+    pt.put("center_of_mass_path", casadi_path + model_prefix + "_CoM_x.casadi");
+    pt.put("jacobian_center_of_mass_path", casadi_path + model_prefix + "_J_com.casadi");
+
+    pt.put("Jacobian_forward_dynamics_path", casadi_path + model_prefix + "_J_fd.casadi");
+    pt.put("Jacobian_inverse_dynamics_path", casadi_path + model_prefix + "_J_id.casadi");
+
+    pt.put("Jacobian_space_path", casadi_path + model_prefix + "_J_s.casadi");
+    pt.put("Jacobian_body_path", casadi_path + model_prefix + "_J_b.casadi");
+
+    pt.put("Jacobian_derivative_space_path", casadi_path + model_prefix + "_dJ_s.casadi");
+    pt.put("Jacobian_derivative_body_path", casadi_path + model_prefix + "_dJ_b.casadi");
+
+    pt.put("mass_matrix_path", casadi_path + model_prefix + "_M.casadi");
+    pt.put("mass_inverse_matrix_path", casadi_path + model_prefix + "_Minv.casadi");
+    pt.put("coriolis_path", casadi_path + model_prefix + "_C.casadi");
+    pt.put("gravity_path", casadi_path + model_prefix + "_G.casadi");
+
+    for (int i = 1; i < this->n_joints; i++)
+    {
+      pt.put("joints." + this->joint_names[i] + ".joint_types", this->joint_types[i - 1]);
+      pt.put("joints." + this->joint_names[i] + ".joint_pos_ub", this->joint_pos_ub[i - 1]);
+      pt.put("joints." + this->joint_names[i] + ".joint_pos_lb", this->joint_pos_lb[i - 1]);
+      pt.put("joints." + this->joint_names[i] + ".joint_torque_limit", this->joint_torque_limit[i - 1]);
+      pt.put("joints." + this->joint_names[i] + ".joint_vel_limit", this->joint_vel_limit[i - 1]);
+    }
+
+    std::stringstream ss;
+    boost::property_tree::json_parser::write_json(ss, pt);
+
+    // Remove escaped slashes (\/ -> /)
+    std::string json_str = ss.str();
+    size_t pos = 0;
+    while ((pos = json_str.find("\\/", pos)) != std::string::npos) {
+      json_str.replace(pos, 2, "/");
+      pos += 1;
+    }
+
+    std::ofstream outFile;
+    outFile.open(filename);
+    outFile << json_str;
+  }
+
+  void Serial_Robot::generate_json(std::string filename, const std::string& base_path, const std::string& library_path, const std::string& urdf_path, const std::string& model_prefix, const std::set<std::string>& generated_functions)
+  {
+    std::string casadi_path = base_path + "/codegen/casadi/";
+
+    boost::property_tree::ptree pt;
+    pt.put("name", this->name);
+    pt.put("model_prefix", model_prefix);
+    pt.put("n_dof", this->n_dof);
+    pt.put("n_joints", this->n_joints);
+    pt.put("n_q", this->n_q);
+    pt.put("n_frames", this->n_frames);
+    pt.put("gravity.x", this->gravity[0]);
+    pt.put("gravity.y", this->gravity[1]);
+    pt.put("gravity.z", this->gravity[2]);
+
+    // Library path (absolute path to .so files)
+    pt.put("library_path", library_path);
+
+    // URDF path (absolute)
+    pt.put("urdf_path", urdf_path);
+
+    // CasADi function paths - only add if generated
+    // Helper lambda to conditionally add path
+    auto add_if_generated = [&](const std::string& func_name, const std::string& json_key) {
+      if (generated_functions.find(func_name) != generated_functions.end()) {
+        pt.put(json_key, casadi_path + model_prefix + "_" + func_name + ".casadi");
+      }
+    };
+
+    add_if_generated("fk", "forward_kinematics_path");
+    add_if_generated("fk_ee", "forward_kinematics_ee_path");
+    add_if_generated("fkrot_ee", "forward_kinematics_rot_ee_path");
+    add_if_generated("fd", "forward_dynamics_path");
+    add_if_generated("id", "inverse_dynamics_path");
+    add_if_generated("CoM_x", "center_of_mass_path");
+    add_if_generated("J_com", "jacobian_center_of_mass_path");
+    add_if_generated("J_fd", "Jacobian_forward_dynamics_path");
+    add_if_generated("J_id", "Jacobian_inverse_dynamics_path");
+    add_if_generated("J_s", "Jacobian_space_path");
+    add_if_generated("J_b", "Jacobian_body_path");
+    add_if_generated("dJ_s", "Jacobian_derivative_space_path");
+    add_if_generated("dJ_b", "Jacobian_derivative_body_path");
+    add_if_generated("M", "mass_matrix_path");
+    add_if_generated("Minv", "mass_inverse_matrix_path");
+    add_if_generated("C", "coriolis_path");
+    add_if_generated("G", "gravity_path");
+
+    for (int i = 1; i < this->n_joints; i++)
+    {
+      pt.put("joints." + this->joint_names[i] + ".joint_types", this->joint_types[i - 1]);
+      pt.put("joints." + this->joint_names[i] + ".joint_pos_ub", this->joint_pos_ub[i - 1]);
+      pt.put("joints." + this->joint_names[i] + ".joint_pos_lb", this->joint_pos_lb[i - 1]);
+      pt.put("joints." + this->joint_names[i] + ".joint_torque_limit", this->joint_torque_limit[i - 1]);
+      pt.put("joints." + this->joint_names[i] + ".joint_vel_limit", this->joint_vel_limit[i - 1]);
+    }
+
+    std::stringstream ss;
+    boost::property_tree::json_parser::write_json(ss, pt);
+
+    // Remove escaped slashes (\/ -> /)
+    std::string json_str = ss.str();
+    size_t pos = 0;
+    while ((pos = json_str.find("\\/", pos)) != std::string::npos) {
+      json_str.replace(pos, 2, "/");
+      pos += 1;
+    }
+
+    std::ofstream outFile;
+    outFile.open(filename);
+    outFile << json_str;
+  }
+
   Eigen::VectorXd Serial_Robot::randomConfiguration()
   {
     Eigen::VectorXd lb_model = this->joint_pos_lb;
