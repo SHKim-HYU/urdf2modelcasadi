@@ -416,7 +416,7 @@ namespace mecali
 
   void Serial_Robot::generate_json(std::string filename, const std::string& base_path, const std::string& urdf_path, const std::string& model_prefix)
   {
-    // base_path: e.g., "/opt/Robot_Foundation/models/robot/HDRobotics/yl012"
+    // base_path: e.g., "/opt/robot_foundation/models/robot/HDRobotics/yl012"
     // model_prefix: e.g., "yl012" (used for file naming)
     std::string casadi_path = base_path + "/codegen/casadi/";
 

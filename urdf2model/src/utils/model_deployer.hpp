@@ -23,11 +23,11 @@ namespace mecali
      * @brief Construct a ModelDeployer
      * @param manufacturer Manufacturer name (e.g., "HDRobotics")
      * @param model_name Model name (e.g., "yl012")
-     * @param output_base Base output path (default: "/opt/Robot_Foundation/models/robots")
+     * @param output_base Base output path (default: "/opt/robot_foundation/models/robots")
      */
     ModelDeployer(const std::string& manufacturer,
                   const std::string& model_name,
-                  const std::string& output_base = "/opt/Robot_Foundation/models/robots");
+                  const std::string& output_base = "/opt/robot_foundation/models/robots");
 
     /**
      * @brief Create all necessary output directories
