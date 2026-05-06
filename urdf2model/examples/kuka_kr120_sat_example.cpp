@@ -3,7 +3,7 @@
 using namespace std;
 int main()
 {
-    string ws_path = "/home/robot/mpc_ws/urdf2modelcasadi";
+    string ws_path = "/home/robot/robot_ws/urdf2modelcasadi";
   // Example with MMO-500 URDF.
 
   // ---------------------------------------------------------------------
@@ -40,22 +40,26 @@ int main()
   casadi::Function G = robot_model.generalized_gravity();
   
   // // Set function for forward kinematics
-  std::vector<std::string> required_Frames = {"joint1", "joint2", "joint3", "joint4", "joint5", "joint6", "tcp_joint"};
+  std::vector<std::string> required_Frames = {"r_joint1", "r_joint2", "r_joint3", "r_joint4", "r_joint5", "r_joint6", "tcp_CoM_fixed"};
 
-  std::string end_effector_name = "tcp_joint";
+  std::string ft_frame_name = "r_ft_sensor_joint";
+  std::string end_effector_name = "tcp_CoM_fixed";
   
 
   casadi::Function fkpos_ee = robot_model.forward_kinematics("position", end_effector_name);
   casadi::Function fkrot_ee = robot_model.forward_kinematics("rotation", end_effector_name);
+  casadi::Function fk_ft = robot_model.forward_kinematics("transformation", ft_frame_name);
   casadi::Function fk_ee = robot_model.forward_kinematics("transformation", end_effector_name);
   casadi::Function fk = robot_model.forward_kinematics("transformation",required_Frames);
+
+  casadi::Function J_fd = robot_model.forward_dynamics_derivatives("jacobian");
+  casadi::Function J_id = robot_model.inverse_dynamics_derivatives("jacobian");
 
   casadi::Function J_s = robot_model.kinematic_jacobian("space", end_effector_name);
   casadi::Function J_b = robot_model.kinematic_jacobian("body", end_effector_name);
 
   casadi::Function dJ_s = robot_model.jacobian_derivative("space", end_effector_name);
   casadi::Function dJ_b = robot_model.jacobian_derivative("body", end_effector_name);
-
 
   // casadi::Function fk       = robot_model.forward_kinematics("transformation", required_Frames);
 
@@ -110,10 +114,11 @@ int main()
   mecali::generate_code(Minv, "kuka_kr_120_sat_Minv", codegen_options);
   mecali::generate_code(C, "kuka_kr_120_sat_C", codegen_options);
   mecali::generate_code(G, "kuka_kr_120_sat_G", codegen_options);
-  //mecali::generate_code(fk_ee_pos, "mmo500_ppr_fk_ee_pos", codegen_options);
-   mecali::generate_code(fkrot_ee, "kuka_kr_120_sat_fkrot_ee", codegen_options);
+   mecali::generate_code(fk_ft, "kuka_kr_120_sat_fk_ft", codegen_options);
   mecali::generate_code(fk_ee, "kuka_kr_120_sat_fk_ee", codegen_options);
   mecali::generate_code(fk, "kuka_kr_120_sat_fk", codegen_options);
+  mecali::generate_code(J_fd, "kuka_kr_120_sat_J_fd", codegen_options);
+  mecali::generate_code(J_id, "kuka_kr_120_sat_J_id", codegen_options);
   mecali::generate_code(J_s, "kuka_kr_120_sat_J_s", codegen_options);
   mecali::generate_code(J_b, "kuka_kr_120_sat_J_b", codegen_options);
   mecali::generate_code(dJ_s, "kuka_kr_120_sat_dJ_s", codegen_options);
