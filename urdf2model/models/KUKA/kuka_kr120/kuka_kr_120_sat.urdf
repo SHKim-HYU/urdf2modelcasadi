@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 
-<robot name="kr_120_plate_kr_250_rail" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="kuka_kr_120_sat" xmlns:xacro="http://ros.org/wiki/xacro">
     <material name="metal_grey"> <color rgba="1 1 1 1"/> </material>
   <material name="white_grey"> <color rgba="0.8 0.8 0.8 1"/> </material>
   <material name="black"> <color rgba="0.0 0.0 0.0 1"/> </material>
@@ -325,7 +325,7 @@
 
   <!-- [ToDo] update CoM Position -->
   <joint name="tcp_CoM_fixed" type="fixed">
-    <origin xyz="-0.00001166 -0.00000932 -0.04673098" rpy="0 0 0" />
+    <origin xyz="-0.0290 0.0076 0.0677" rpy="0 0 0" />
     <parent link="r_TGT" />
     <child link="sat_CoM" />
     <axis xyz="0 0 0" />

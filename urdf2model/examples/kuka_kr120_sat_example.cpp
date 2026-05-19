@@ -1,10 +1,23 @@
+// =============================================================================
+// Robot Model Configuration
+// =============================================================================
+#define MANUFACTURER    "KUKA"
+#define MODEL_NAME      "kuka_kr_120_sat"
+#define VERSION         "1.0.0"
+// =============================================================================
+
+
 #include <casadi/casadi.hpp>
 #include "model_interface.hpp"
 using namespace std;
 int main()
 {
-    string ws_path = "/home/robot/robot_ws/urdf2modelcasadi";
+    string ws_path = "/home/robot/mpc_ws/urdf2modelcasadi";
   // Example with MMO-500 URDF.
+
+  // Create deployer (handles all paths and directories)
+    mecali::ModelDeployer deployer(MANUFACTURER, MODEL_NAME);
+    deployer.setup_directories();
 
   // ---------------------------------------------------------------------
   // Create a model based on a URDF file
@@ -14,17 +27,8 @@ int main()
   mecali::Serial_Robot robot_model;
   // Define (optinal) gravity vector to be used
   Eigen::Vector3d gravity_vector(0, 0, -9.81);
-  // Eigen::Vector3d gravity_vector(0, 0, 0);
-  // Create the model based on a URDF file
   robot_model.import_model(urdf_filename, gravity_vector);
-  // robot_model.import_floating_base_model(urdf_filename, gravity_vector, true, true);
-  //robot_model.import_planar_base_model(urdf_filename, gravity_vector, true, true);
-  // For a floating base robot:
-  // q = [global_base_position, global_base_quaternion, joint_positions]
-  // v = [local_base_velocity_linear, local_base_velocity_angular, joint_velocities]
-  // See: https://github.com/stack-of-tasks/pinocchio/issues/1137
-
-  // Print some information related to the imported model (boundaries, frames, DoF, etc)
+  
   robot_model.print_model_data();
 
   // ---------------------------------------------------------------------
@@ -108,23 +112,28 @@ int main()
   mecali::Dictionary codegen_options;
   codegen_options["c"] = true;
   codegen_options["save"] = true;
-  mecali::generate_code(fd, "kuka_kr_120_sat_fd", codegen_options);
-  mecali::generate_code(id, "kuka_kr_120_sat_id", codegen_options);
-  mecali::generate_code(M, "kuka_kr_120_sat_M", codegen_options);
-  mecali::generate_code(Minv, "kuka_kr_120_sat_Minv", codegen_options);
-  mecali::generate_code(C, "kuka_kr_120_sat_C", codegen_options);
-  mecali::generate_code(G, "kuka_kr_120_sat_G", codegen_options);
-   mecali::generate_code(fk_ft, "kuka_kr_120_sat_fk_ft", codegen_options);
-  mecali::generate_code(fk_ee, "kuka_kr_120_sat_fk_ee", codegen_options);
-  mecali::generate_code(fk, "kuka_kr_120_sat_fk", codegen_options);
-  mecali::generate_code(J_fd, "kuka_kr_120_sat_J_fd", codegen_options);
-  mecali::generate_code(J_id, "kuka_kr_120_sat_J_id", codegen_options);
-  mecali::generate_code(J_s, "kuka_kr_120_sat_J_s", codegen_options);
-  mecali::generate_code(J_b, "kuka_kr_120_sat_J_b", codegen_options);
-  mecali::generate_code(dJ_s, "kuka_kr_120_sat_dJ_s", codegen_options);
-  mecali::generate_code(dJ_b, "kuka_kr_120_sat_dJ_b", codegen_options);
 
-  robot_model.generate_json("kuka_kr_120_sat.json");
+  std::cout << "\nGenerating CasADi functions..." << std::endl;
+
+  deployer.generate(fd, "fd", codegen_options);
+  deployer.generate(id, "id", codegen_options);
+  deployer.generate(M, "M", codegen_options);
+  deployer.generate(Minv, "Minv", codegen_options);
+  deployer.generate(C, "C", codegen_options);
+  deployer.generate(G, "G", codegen_options);
+  deployer.generate(fk_ft, "fk_ft", codegen_options);
+  deployer.generate(fk_ee, "fk_ee", codegen_options);
+  deployer.generate(fk, "fk", codegen_options);
+  deployer.generate(J_fd, "J_fd", codegen_options);
+  deployer.generate(J_id, "J_id", codegen_options);
+  deployer.generate(J_s, "J_s", codegen_options);
+  deployer.generate(J_b, "J_b", codegen_options);
+  deployer.generate(dJ_s, "dJ_s", codegen_options);
+  deployer.generate(dJ_b, "dJ_b", codegen_options);
+
+  // Generate JSON config and copy model files
+  deployer.generate_config(robot_model);
+  deployer.print_summary();
 
   // std::cout << fd << std::endl;
 }
