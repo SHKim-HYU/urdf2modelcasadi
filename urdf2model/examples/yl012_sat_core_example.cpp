@@ -24,6 +24,9 @@ int main()
   // v = [local_base_velocity_linear, local_base_velocity_angular, joint_velocities]
   // See: https://github.com/stack-of-tasks/pinocchio/issues/1137
 
+  robot_model.rotorGearRatio << 100, 120, 100, 100, 100, 101;
+  robot_model.rotorInertia << 6.6e-5, 1.39e-4, 6.6e-5, 2.0e-5, 2.0e-5, 1.82e-5;
+
   // Print some information related to the imported model (boundaries, frames, DoF, etc)
   robot_model.print_model_data();
 

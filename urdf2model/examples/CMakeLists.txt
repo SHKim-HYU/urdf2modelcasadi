@@ -750,6 +750,17 @@ target_link_libraries( yl012_sat_core_example
        ${CASADI_LIB}
        pinocchio::pinocchio
                          )
+
+## HD-yl012-SAT-CORE-7dof
+add_executable( yl012_sat_core_7dof_example
+              yl012_sat_core_7dof_example.cpp
+              )
+target_link_libraries( yl012_sat_core_7dof_example
+
+       ${PROJECT_NAME}
+       ${CASADI_LIB}
+       pinocchio::pinocchio
+                         )
                          
 ## HYU-SPA
 add_executable( hyu_spa_example

@@ -3,13 +3,13 @@
 using namespace std;
 int main()
 {
-    string ws_path = "/home/mtplnr/mpc_ws/urdf2modelcasadi";
+    string ws_path = "/home/robot/mpc_ws/urdf2modelcasadi";
   // Example with MMO-500 URDF.
 
   // ---------------------------------------------------------------------
   // Create a model based on a URDF file
   // ---------------------------------------------------------------------
-  std::string urdf_filename = ws_path+"/urdf2model/models/HDRobotics/yl012/yl012_sat.urdf";
+  std::string urdf_filename = ws_path+"/urdf2model/models/HDRobotics/yl012/yl012_sat_core_7dof.urdf";
   // Instantiate a Serial_Robot object called robot_model
   mecali::Serial_Robot robot_model;
   // Define (optinal) gravity vector to be used
@@ -24,8 +24,10 @@ int main()
   // v = [local_base_velocity_linear, local_base_velocity_angular, joint_velocities]
   // See: https://github.com/stack-of-tasks/pinocchio/issues/1137
 
-  robot_model.rotorGearRatio << 100, 120, 100, 100, 100, 100;
-  robot_model.rotorInertia << 6.6e-5, 1.39e-4, 6.6e-5, 2.0e-5, 2.0e-5, 1.3e-5;
+  robot_model.rotorGearRatio << 100, 120, 100, 100, 100, 100, 101;
+  robot_model.rotorInertia << 6.6e-5, 1.39e-4, 6.6e-5, 2.0e-5, 2.0e-5, 1.3e-5, 1.82e-5;
+ 
+  robot_model.set_armature();
 
   // Print some information related to the imported model (boundaries, frames, DoF, etc)
   robot_model.print_model_data();
@@ -44,7 +46,7 @@ int main()
   casadi::Function G = robot_model.generalized_gravity();
   
   // // Set function for forward kinematics
-  std::vector<std::string> required_Frames = {"joint0", "joint1", "joint2", "joint3", "joint4", "joint5", "ft_fixed", "tcp_CoM_fixed"};
+  std::vector<std::string> required_Frames = {"joint0", "joint1", "joint2", "joint3", "joint4", "joint5", "joint6", "ft_fixed", "tcp_CoM_fixed"};
 
   std::string ft_frame_name = "ft_fixed";
   std::string end_effector_name = "tcp_CoM_fixed";
@@ -111,25 +113,25 @@ int main()
   mecali::Dictionary codegen_options;
   codegen_options["c"] = true;
   codegen_options["save"] = true;
-  mecali::generate_code(fd, "yl012_sat_fd", codegen_options);
-  mecali::generate_code(CoM_x, "yl012_sat_CoM_x", codegen_options);
-  mecali::generate_code(id, "yl012_sat_id", codegen_options);
-  mecali::generate_code(M, "yl012_sat_M", codegen_options);
-  mecali::generate_code(Minv, "yl012_sat_Minv", codegen_options);
-  mecali::generate_code(C, "yl012_sat_C", codegen_options);
-  mecali::generate_code(G, "yl012_sat_G", codegen_options);
-  
-   mecali::generate_code(fk_ft, "yl012_sat_fk_ft", codegen_options);
-  mecali::generate_code(fk_ee, "yl012_sat_fk_ee", codegen_options);
-  mecali::generate_code(fk, "yl012_sat_fk", codegen_options);
-  mecali::generate_code(J_fd, "yl012_sat_J_fd", codegen_options);
-  mecali::generate_code(J_id, "yl012_sat_J_id", codegen_options);
-  mecali::generate_code(J_s, "yl012_sat_J_s", codegen_options);
-  mecali::generate_code(J_b, "yl012_sat_J_b", codegen_options);
-  mecali::generate_code(dJ_s, "yl012_sat_dJ_s", codegen_options);
-  mecali::generate_code(dJ_b, "yl012_sat_dJ_b", codegen_options);
+  mecali::generate_code(fd, "yl012_sat_core_fd", codegen_options);
+  mecali::generate_code(CoM_x, "yl012_sat_core_CoM_x", codegen_options);
+  mecali::generate_code(id, "yl012_sat_core_id", codegen_options);
+  mecali::generate_code(M, "yl012_sat_core_M", codegen_options);
+  mecali::generate_code(Minv, "yl012_sat_core_Minv", codegen_options);
+  mecali::generate_code(C, "yl012_sat_core_C", codegen_options);
+  mecali::generate_code(G, "yl012_sat_core_G", codegen_options);
+  //mecali::generate_code(fk_ee_pos, "mmo500_ppr_fk_ee_pos", codegen_options);
+   mecali::generate_code(fk_ft, "yl012_sat_core_fk_ft", codegen_options);
+  mecali::generate_code(fk_ee, "yl012_sat_core_fk_ee", codegen_options);
+  mecali::generate_code(fk, "yl012_sat_core_fk", codegen_options);
+  mecali::generate_code(J_fd, "yl012_sat_core_J_fd", codegen_options);
+  mecali::generate_code(J_id, "yl012_sat_core_J_id", codegen_options);
+  mecali::generate_code(J_s, "yl012_sat_core_J_s", codegen_options);
+  mecali::generate_code(J_b, "yl012_sat_core_J_b", codegen_options);
+  mecali::generate_code(dJ_s, "yl012_sat_core_dJ_s", codegen_options);
+  mecali::generate_code(dJ_b, "yl012_sat_core_dJ_b", codegen_options);
 
-  robot_model.generate_json("yl012_sat.json");
+  robot_model.generate_json("yl012_sat_core.json");
 
   // std::cout << fd << std::endl;
 }

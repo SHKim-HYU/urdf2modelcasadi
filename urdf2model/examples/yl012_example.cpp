@@ -38,6 +38,10 @@ int main()
     mecali::Serial_Robot robot_model;
     Eigen::Vector3d gravity_vector(0, 0, -9.81);
     robot_model.import_model(urdf_filename, gravity_vector);
+
+    robot_model.rotorGearRatio << 100, 120, 100, 100, 100, 100;
+    robot_model.rotorInertia << 6.6e-5, 1.39e-4, 6.6e-5, 2.0e-5, 2.0e-5, 1.3e-5;
+
     robot_model.print_model_data();
 
     // ---------------------------------------------------------------------
