@@ -30,7 +30,7 @@
   export URDF2MODELCASADI_PATH="$PROJECT_ROOT"
 
   # Robot Foundation path
-  ROBOT_FOUNDATION_PATH="/opt/Robot_Foundation/models/robot"
+  ROBOT_FOUNDATION_PATH="/opt/robot_foundation/models/robot"
 
 # If the CMakeCache.txt file exists, delete it.
   if test -f "CMakeCache.txt"; then
