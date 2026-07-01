@@ -297,7 +297,7 @@
   <joint name="r_ft_sensor_joint" type="fixed">
     <parent link="r_tcp"/>
     <child link="r_FTSensor"/>
-    <origin rpy="0.0 0  3.1415926536" xyz="0.0 0.0 0.08588"/>
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.08588"/>
   </joint> 
   <joint name="r_TGT_fixed" type="fixed">
     <parent link="r_FTSensor"/>
