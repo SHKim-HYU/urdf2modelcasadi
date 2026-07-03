@@ -25,7 +25,7 @@ int main()
   // See: https://github.com/stack-of-tasks/pinocchio/issues/1137
 
   robot_model.rotorGearRatio << 0,0,0,0,0,0, 160, 160, 160, 160, 160, 160, 160;
-  robot_model.rotorInertia << 0,0,0,0,0,0, 3.371e-4, 3.371e-4, 3.371e-4, 3.371e-4, 3.371e-4, 3.371e-4, 3.371e-4;
+  robot_model.rotorInertia << 0,0,0,0,0,0, 3.636e-4, 3.636e-4, 3.636e-4, 3.636e-4, 3.636e-4, 3.636e-4, 3.636e-4; // Rotor+Wave generator inertia
   robot_model.set_armature();
 
   // Print some information related to the imported model (boundaries, frames, DoF, etc)
